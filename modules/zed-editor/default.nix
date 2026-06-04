@@ -15,7 +15,6 @@ in {
   extraPackages = with pkgs; [
     nil
     nixd
-    nixfmt-frc-style
     lua-language-server
     clang-tools
     gopls
