@@ -25,5 +25,5 @@ in {
     dockerfile-language-server-nodejs
     docker-compose-language-service
     vscode-langservers-extracted
-  ]
+  ];
 }
