@@ -41,7 +41,7 @@
     owner = "tim";
     group = "users";
     mode = "0400";
-  }
+  };
   # Set your time zone.
   time.timeZone = "America/New_York";
 
