@@ -13,6 +13,4 @@ result-*
 # Secrets — adjust to match your actual filenames
 *.key
 *.pem
-secrets.nix
-*.secret
 .env

@@ -35,7 +35,13 @@
   };
 
 
-
+  age.identityPaths = [ "/home/tim/.age/agenix-identity.txt" ];
+  age.secrets.github-token = {
+    file = ./secrets/github-token.age;
+    owner = "tim";
+    group = "users";
+    mode = "0400";
+  }
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -132,6 +138,7 @@
     poppler-utils
     pandoc
     zathura
+    nixd
   ];
 
   # I need to allow un-free packages
@@ -158,14 +165,6 @@
   };
 
   services.logind.settings.Login.HandleLidSwitch = "ignore";
-
-# Add Keyring & unlock at login
-services.gnome.gnome-keyring.enable = true;
-
-# unlock the keyring automatically at login — use your actual login service
-# (lightdm/gdm/sddm for a display manager, or "login" for TTY)
-security.pam.services.login.enableGnomeKeyring = true;
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Some programs need SUID wrappers, can be configured further or are
