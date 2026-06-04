@@ -18,4 +18,4 @@
     settings = {
       format_on_save = "on";
   };
-}
+};
