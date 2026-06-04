@@ -1,6 +1,6 @@
 {
   agent_servers = {
-    claude-acp.type = "registry"
+    claude-acp.type = "registry";
   };
   hour_format = "hour12";
   vim_mode = false;
