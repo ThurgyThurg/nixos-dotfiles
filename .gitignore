@@ -1,0 +1,18 @@
+# Nix build outputs (symlinks created by nixos-rebuild / nix build)
+result
+result-*
+
+# direnv / nix-direnv cache
+.direnv/
+
+# Editor & OS junk
+*.swp
+*~
+.DS_Store
+
+# Secrets — adjust to match your actual filenames
+*.key
+*.pem
+secrets.nix
+*.secret
+.env
