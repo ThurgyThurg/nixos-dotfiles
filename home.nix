@@ -87,6 +87,9 @@ in
       };
     };
   };
+  programs.zed-editor = import ./modules/darwin/programs/zed-editor {
+    inherit pkgs;
+  };
   programs.git = {
     enable = true;
     settings = {

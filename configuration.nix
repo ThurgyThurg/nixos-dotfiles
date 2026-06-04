@@ -127,7 +127,6 @@
     snip
     alacritty
     autorandr
-    zed-editor
     feh
     thunar
     thunar-volman          # optional: auto-mount removable drives
@@ -138,7 +137,6 @@
     poppler-utils
     pandoc
     zathura
-    nixd
   ];
 
   # I need to allow un-free packages
