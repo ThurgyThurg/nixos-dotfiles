@@ -87,7 +87,7 @@ in
       };
     };
   };
-  programs.zed-editor = import ./modules/darwin/programs/zed-editor {
+  programs.zed-editor = import ./modules/zed-editor {
     inherit pkgs;
   };
   programs.git = {
