@@ -12,4 +12,18 @@ in {
       terminal = terminal;
       lsp = lsp;
     };
+  extraPackages = with pkgs; [
+    nil
+    nixd
+    nixfmt-frc-style
+    lua-language-server
+    clang-tools
+    gopls
+    rust-analyzer
+    pyright
+    alejandra
+    dockerfile-language-server-nodejs
+    docker-compose-language-service
+    vscode-langservers-extracted
+  ]
 }

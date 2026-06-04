@@ -5,5 +5,5 @@
   "dockerfile"
   "docker-compose"
   "html"
-  "clang-tools"
+  "lua"
 ]
