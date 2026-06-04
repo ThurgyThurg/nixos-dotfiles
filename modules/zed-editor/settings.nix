@@ -17,4 +17,5 @@
     metrics = false;
   };
   sessions.trust_all_worktrees = true;
+  languages.Markdown.format_on_save = "on";
 }
