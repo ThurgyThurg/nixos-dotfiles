@@ -10,7 +10,7 @@
   show_whitespaces = "trailing";
   ui_font_size = 14;
   buffer_font_size = 12;
-  theme.mode = dark;
+  theme.mode = "dark";
   formatter = "language_server";
   telemetry = {
     diagnostics = false;
