@@ -1,9 +1,7 @@
 {
-  "agent_servers": {
-    "claude-acp": {
-      "type": "registry"
-    }
-  },
+  agent_servers = {
+    claude-acp.type = "registry"
+  };
   hour_format = "hour12";
   vim_mode = false;
   load_direnv = "shell_hook";
@@ -17,6 +15,6 @@
   telemetry = {
     diagnostics = false;
     metrics = false;
-  }
+  };
   sessions.trust_all_worktrees = true;
 }
