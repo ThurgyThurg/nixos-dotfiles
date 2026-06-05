@@ -107,23 +107,12 @@
     neovim
     wget
     nano
-    _1password-gui
-    _1password-cli
     tailscale
-    libreoffice-fresh
-    htop
-    btop
-    obsidian
-    cliamp
     impala
     bluetui
     nfs-utils
-    claude-code
-    tmux
-    starship
     rofi
     sbctl
-    snip
     alacritty
     autorandr
     feh
@@ -132,10 +121,6 @@
     thunar-archive-plugin # optional: right-click archive support
     picom
     dunst
-    redshift
-    poppler-utils
-    pandoc
-    zathura
   ];
 
   # I need to allow un-free packages

@@ -33,6 +33,23 @@ in {
     '';
   };
   home.packages = with pkgs; [
+    python3
+    libreoffice-fresh
+    _1password-cli
+    _1password-gui
+    htop
+    btop
+    obsidian
+    cliamp
+    bluetui
+    claude-code
+    tmux
+    poppler-utils
+    pandoc
+    zathura
+    snip
+    redshift
+
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
