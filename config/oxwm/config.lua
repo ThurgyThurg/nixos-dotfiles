@@ -17,8 +17,8 @@ local colors = {
     blue = "#6dade3",
     purple = "#ad8ee6",
     sep = "#444b6a",
-    ibm_green = "#14C72E";
-    ibm_green2 = "#05731C";
+    ibm_green = "#14C72E",
+    ibm_green2 = "#05731C",
 }
 
 local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
@@ -26,7 +26,7 @@ local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 
 local bar_font = "JetBrainsMono Nerd Font Propo:size=10"
 local blocks = {
-        oxwm.bar.block.datetime({
+    oxwm.bar.block.datetime({
         format = "{}",
         date_format = "%a, %b %d - %-I:%M %P",
         interval = 1,
@@ -66,20 +66,20 @@ local blocks = {
         color = colors.fg,
         underline = false,
     }),
---    oxwm.bar.block.shell({
---        format = "Vol: {}",
---        command = "pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -o '[0-9]*%' | head -1",
---        interval = 3,
---        color = colors.ibm_green,
---        underline = true,
---        click = "alacritty -e alsamixer",
---    }),
---    oxwm.bar.block.static({
---        text = "│",
---        interval = 999999999,
---        color = colors.fg,
---        underline = false,
---    }),
+    --    oxwm.bar.block.shell({
+    --        format = "Vol: {}",
+    --        command = "pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -o '[0-9]*%' | head -1",
+    --        interval = 3,
+    --        color = colors.ibm_green,
+    --        underline = true,
+    --        click = "alacritty -e alsamixer",
+    --    }),
+    --    oxwm.bar.block.static({
+    --        text = "│",
+    --        interval = 999999999,
+    --        color = colors.fg,
+    --        underline = false,
+    --    }),
     oxwm.bar.block.shell({
         format = "BT: {}",
         command = "device=$(bluetoothctl devices Connected 2>/dev/null | head -1 | cut -d' ' -f3-); echo ${device:-None}",
@@ -152,7 +152,10 @@ oxwm.key.bind({ modkey }, "Comma", oxwm.monitor.focus(-1))
 oxwm.key.bind({ modkey }, "Period", oxwm.monitor.focus(1))
 oxwm.key.bind({ modkey, "Shift" }, "Comma", oxwm.monitor.tag(-1))
 oxwm.key.bind({ modkey, "Shift" }, "Period", oxwm.monitor.tag(1))
-
+oxwm.key.bind({ modkey, "Shift" }, "L",
+    oxwm.spawn({ "sh", "-c", "i3lock -i \"$HOME/nixos-dotfiles/config/oxwm/wallpaper.png\" -e" }))
+oxwm.key.bind({ modkey, "Shift" }, "W",
+    oxwm.spawn({ "sh", "-c", "feh --bg-scale ~/.config/oxwm/wallpaper.png" }))
 oxwm.key.bind({ modkey }, "1", oxwm.tag.view(0))
 oxwm.key.bind({ modkey }, "2", oxwm.tag.view(1))
 oxwm.key.bind({ modkey }, "3", oxwm.tag.view(2))

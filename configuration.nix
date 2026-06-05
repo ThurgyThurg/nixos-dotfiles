@@ -1,15 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.limine.enable = true;
@@ -20,7 +21,7 @@
   # FIDO 2 LUKS unlock
   boot.initrd.systemd.enable = true;
   boot.initrd.luks.devices."encrypted" = {
-    crypttabExtraOpts = [ "fido2-device=auto" ];
+    crypttabExtraOpts = ["fido2-device=auto"];
   };
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -34,8 +35,7 @@
     enable = true;
   };
 
-
-  age.identityPaths = [ "/home/tim/.age/agenix-identity.txt" ];
+  age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
   age.secrets.github-token = {
     file = ./secrets/github-token.age;
     owner = "tim";
@@ -62,7 +62,7 @@
     enable = true;
     windowManager.oxwm.enable = true;
   };
- # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.enable = true;
 
   # Configure keymap in X11
   #services.xserver.xkb.layout = "us";
@@ -91,13 +91,13 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
   };
-  services.gvfs.enable = true;  # needed for trash, network shares, etc.
-  services.tumbler.enable = true;  # optional: thumbnail generation
+  services.gvfs.enable = true; # needed for trash, network shares, etc.
+  services.tumbler.enable = true; # optional: thumbnail generation
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -129,14 +129,15 @@
     autorandr
     feh
     thunar
-    thunar-volman          # optional: auto-mount removable drives
-    thunar-archive-plugin  # optional: right-click archive support
+    thunar-volman # optional: auto-mount removable drives
+    thunar-archive-plugin # optional: right-click archive support
     picom
     dunst
     redshift
     poppler-utils
     pandoc
     zathura
+    i3lock
   ];
 
   # I need to allow un-free packages
@@ -164,7 +165,7 @@
 
   services.logind.settings.Login.HandleLidSwitch = "ignore";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -207,5 +208,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
