@@ -109,12 +109,10 @@
     nano
     tailscale
     impala
-    bluetui
     nfs-utils
     rofi
     sbctl
     alacritty
-    autorandr
     feh
     thunar
     thunar-volman # optional: auto-mount removable drives
