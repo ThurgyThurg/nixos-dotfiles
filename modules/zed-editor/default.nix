@@ -21,7 +21,7 @@ in {
     rust-analyzer
     pyright
     alejandra
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     docker-compose-language-service
     vscode-langservers-extracted
   ];

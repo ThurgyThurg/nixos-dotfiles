@@ -156,6 +156,8 @@ oxwm.key.bind({ modkey, "Shift" }, "L",
     oxwm.spawn({ "sh", "-c", "i3lock -i \"$HOME/nixos-dotfiles/config/oxwm/wallpaper.png\" -e" }))
 oxwm.key.bind({ modkey, "Shift" }, "W",
     oxwm.spawn({ "sh", "-c", "feh --bg-scale ~/.config/oxwm/wallpaper.png" }))
+oxwm.key.bind({ modkey, "Shift" }, "D",
+    oxwm.spawn({ "sh", "-c", "autorandr --change" }))
 oxwm.key.bind({ modkey }, "1", oxwm.tag.view(0))
 oxwm.key.bind({ modkey }, "2", oxwm.tag.view(1))
 oxwm.key.bind({ modkey }, "3", oxwm.tag.view(2))

@@ -137,7 +137,6 @@
     poppler-utils
     pandoc
     zathura
-    i3lock
   ];
 
   # I need to allow un-free packages
@@ -147,6 +146,7 @@
   programs.firefox.enable = true;
 
   programs.dconf.enable = true;
+  programs.i3lock.enable = true;
 
   #fonts
   fonts.packages = with pkgs; [
