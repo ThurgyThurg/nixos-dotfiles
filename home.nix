@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
@@ -11,8 +14,7 @@ let
     btop = "btop";
     obsidian = "obsidian";
   };
-in
-{
+in {
   imports = [
     ./modules/theme.nix
   ];
@@ -20,6 +22,7 @@ in
   home.username = "tim";
   home.homeDirectory = "/home/tim";
   home.stateVersion = "25.11";
+  home.file.".xinitrc".source = create_symlink "${dotfiles}/xinitrc";
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -38,12 +41,12 @@ in
         fzf
         nix-search-tv
       ];
-      text = builtins.readFile"${pkgs.nix-search-tv.src}/nixpkgs.sh";
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
     })
   ];
 
-
-  xdg.configFile = builtins.mapAttrs
+  xdg.configFile =
+    builtins.mapAttrs
     (name: subpath: {
       source = create_symlink "${dotfiles}/${subpath}";
       recursive = true;
@@ -83,7 +86,7 @@ in
             rate = "120.00";
             position = "0x0";
           };
-       };
+        };
       };
     };
   };
