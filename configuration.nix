@@ -11,8 +11,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
-  # Use the systemd-boot EFI boot loader.
+  # BOOTLOADER
+  # Use the limine as EFI boot loader, along with allowing for secure boot.
   boot.loader.limine.enable = true;
   boot.loader.limine.secureBoot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -23,28 +23,31 @@
   boot.initrd.luks.devices."encrypted" = {
     crypttabExtraOpts = ["fido2-device=auto"];
   };
+  # SYSTEM
+  # Set your time zone.
+  time.timeZone = "America/New_York";
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.hostName = "nixos-tim"; # Define your hostname.
-
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
-
-  services.tailscale = {
-    enable = true;
-  };
-
+  # setup agenix paths for encrypted keys
   age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
+  # github key encryption
   age.secrets.github-token = {
     file = ./secrets/github-token.age;
     owner = "tim";
     group = "users";
     mode = "0400";
   };
-  # Set your time zone.
-  time.timeZone = "America/New_York";
 
+  # NETWORKING
+  # Set host name.
+  networking.hostName = "nixos-tim";
+  # Configure network connections interactively with nmcli or nmtui.
+  networking.networkmanager.enable = true;
+  # enable tailscale
+  # todo in future, setup secondary tailnet connection (so I can access my music at home while at work)
+  services.tailscale = {
+    enable = true;
+  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -101,10 +104,9 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim
     wget
     nano
-    kitty
     _1password-gui
     _1password-cli
     tailscale
@@ -121,9 +123,6 @@
     starship
     rofi
     sbctl
-    apple-cursor
-    andromeda-gtk-theme
-    zafiro-icons
     snip
     alacritty
     autorandr

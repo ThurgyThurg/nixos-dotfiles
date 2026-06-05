@@ -8,9 +8,7 @@
 
   configs = {
     oxwm = "oxwm";
-    walker = "walker";
     alacritty = "alacritty";
-    waybar = "waybar";
     btop = "btop";
     obsidian = "obsidian";
   };

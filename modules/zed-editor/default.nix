@@ -1,11 +1,11 @@
 {pkgs}: let
-  extentions = import ./extensions.nix;
+  extensions = import ./extensions.nix;
   terminal = import ./terminal.nix;
   lsp = import ./lsp.nix;
   settings = import ./settings.nix;
 in {
   enable = true;
-  extensions = extentions;
+  extensions = extensions;
   userSettings =
     settings
     // {
@@ -13,7 +13,6 @@ in {
       lsp = lsp;
     };
   extraPackages = with pkgs; [
-    nil
     nixd
     lua-language-server
     clang-tools
