@@ -23,8 +23,25 @@
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./hosts/P52
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
+        agenix.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.tim = import ./home.nix;
+            backupFileExtension = "backup";
+
+          };
+        }
+      ];
+    };
+    nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/itx]
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         {
