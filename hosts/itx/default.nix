@@ -64,7 +64,7 @@
   services.xserver = {
     enable = true;
     windowManager.oxwm.enable = true;
-    videoDrivers = "nvidia";
+    videoDriver = "nvidia";
   };
   # services.displayManager.sddm.enable = true;
 
