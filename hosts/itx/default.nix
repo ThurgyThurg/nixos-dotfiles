@@ -28,15 +28,15 @@
   time.timeZone = "America/New_York";
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # setup agenix paths for encrypted keys
-  age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
+  # setup agenix paths for encrypted keys -- need to re-key before adding.
+ # age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
   # github key encryption
-  age.secrets.github-token = {
-    file = ./secrets/github-token.age;
-    owner = "tim";
-    group = "users";
-    mode = "0400";
-  };
+ # age.secrets.github-token = {
+ #   file = ../../secrets/github-token.age;
+ #   owner = "tim";
+ #   group = "users";
+ #   mode = "0400";
+ # };
 
   # NETWORKING
   # Set host name.
@@ -148,6 +148,7 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-itx";
     };
+  };
 # Rekey from P52 before uncommenting.
 #     initExtra = ''
 #      if [ -r /run/agenix/github-token ]; then
