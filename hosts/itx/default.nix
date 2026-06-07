@@ -148,12 +148,13 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-itx";
     };
-    initExtra = ''
-      if [ -r /run/agenix/github-token ]; then
-        export GH_TOKEN="$(cat /run/agenix/github-token)"
-      fi
-    '';
-  };
+# Rekey from P52 before uncommenting.
+#     initExtra = ''
+#      if [ -r /run/agenix/github-token ]; then
+#        export GH_TOKEN="$(cat /run/agenix/github-token)"
+#      fi
+#    '';
+#  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Some programs need SUID wrappers, can be configured further or are
