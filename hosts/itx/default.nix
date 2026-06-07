@@ -14,7 +14,7 @@
   # BOOTLOADER
   # Use the limine as EFI boot loader, along with allowing for secure boot.
   boot.loader.limine.enable = true;
-  boot.loader.limine.secureBoot.enable = true;
+  #boot.loader.limine.secureBoot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.limine.maxGenerations = 20;
   services.getty.autologinUser = "tim";
@@ -64,7 +64,7 @@
   services.xserver = {
     enable = true;
     windowManager.oxwm.enable = true;
-    videoDrivers = "nvidia"; 
+    videoDrivers = "nvidia";
   };
   # services.displayManager.sddm.enable = true;
 
@@ -136,14 +136,24 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  hardware.graphics.enable = true; 
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
     powerManagement.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-itx";
+    };
+    initExtra = ''
+      if [ -r /run/agenix/github-token ]; then
+        export GH_TOKEN="$(cat /run/agenix/github-token)"
+      fi
+    '';
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Some programs need SUID wrappers, can be configured further or are

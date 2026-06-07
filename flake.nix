@@ -41,7 +41,7 @@
     nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/itx]
+        ./hosts/itx
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         {

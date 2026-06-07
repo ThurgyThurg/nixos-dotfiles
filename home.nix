@@ -21,17 +21,7 @@ in {
   home.homeDirectory = "/home/tim";
   home.stateVersion = "25.11";
   home.file.".xinitrc".source = create_symlink "${dotfiles}/xinitrc";
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-tim";
-    };
-    initExtra = ''
-      if [ -r /run/agenix/github-token ]; then
-        export GH_TOKEN="$(cat /run/agenix/github-token)"
-      fi
-    '';
-  };
+
   home.packages = with pkgs; [
     python3
     libreoffice-fresh
