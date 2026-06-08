@@ -26,6 +26,20 @@ local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 
 local bar_font = "JetBrainsMono Nerd Font Propo:size=10"
 local blocks = {
+    -- holding for custom pomordo timer block
+    oxwm.bar.block.shell({
+        format = "TS: {}",
+        command = "python3 $HOME/Downloads/tailscale-check.py nixos-tim",
+        interval = 60,
+        color = colors.ibm_green,
+        underline = false,
+    }),
+    oxwm.bar.block.static({
+        text = "│",
+        interval = 999999999,
+        color = colors.fg,
+        underline = false,
+    }),
     oxwm.bar.block.datetime({
         format = "{}",
         date_format = "%a, %b %d - %-I:%M %P",
