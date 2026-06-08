@@ -48,6 +48,29 @@
   services.tailscale = {
     enable = true;
   };
+
+  # Second tailscale instance — home tailnet
+  systemd.services.tailscaled2 = {
+    description = "Tailscale node agent (home tailnet)";
+    after = ["network-pre.target"];
+    wants = ["network-pre.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      ExecStartPre = "${pkgs.tailscale}/bin/tailscaled --cleanup";
+      ExecStart = "${pkgs.tailscale}/bin/tailscaled --state=/var/lib/tailscale2/tailscaled.state --socket=/run/tailscale2/tailscaled.sock --port=41642";
+      ExecStopPost = "${pkgs.tailscale}/bin/tailscaled --cleanup";
+      RuntimeDirectory = "tailscale2";
+      RuntimeDirectoryMode = "0755";
+      StateDirectory = "tailscale2";
+      StateDirectoryMode = "0700";
+      Type = "notify";
+      AmbientCapabilities = "cap_net_admin cap_net_raw cap_net_bind_service";
+      CapabilityBoundingSet = "cap_net_admin cap_net_raw cap_net_bind_service";
+    };
+  };
+
+  # Open the second WireGuard port
+  networking.firewall.allowedUDPPorts = [41642];
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
