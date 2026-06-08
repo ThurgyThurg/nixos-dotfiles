@@ -11,6 +11,7 @@
     alacritty = "alacritty";
     btop = "btop";
     obsidian = "obsidian";
+    cliamp = "cliamp";
   };
 in {
   imports = [
