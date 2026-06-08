@@ -19,7 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, agenix, oxwm, ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nixos-hardware,
+    agenix,
+    oxwm,
+    ...
+  }: {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -31,9 +39,8 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.tim = import ./home.nix;
+            users.tim = import ./home-P52.nix;
             backupFileExtension = "backup";
-
           };
         }
       ];
@@ -48,9 +55,8 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.tim = import ./home.nix;
+            users.tim = import ./home-itx.nix;
             backupFileExtension = "backup";
-
           };
         }
       ];

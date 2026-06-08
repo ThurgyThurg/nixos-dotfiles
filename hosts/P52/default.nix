@@ -32,7 +32,7 @@
   age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
   # github key encryption
   age.secrets.github-token = {
-    file = ./secrets/github-token.age;
+    file = ../.././secrets/github-token.age;
     owner = "tim";
     group = "users";
     mode = "0400";
@@ -146,18 +146,6 @@
   };
 
   services.logind.settings.Login.HandleLidSwitch = "ignore";
-
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-tim";
-    };
-    initExtra = ''
-      if [ -r /run/agenix/github-token ]; then
-        export GH_TOKEN="$(cat /run/agenix/github-token)"
-      fi
-    '';
-  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Some programs need SUID wrappers, can be configured further or are

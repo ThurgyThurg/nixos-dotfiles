@@ -57,6 +57,22 @@ in {
       recursive = true;
     })
     configs;
+  programs.zed-editor = import ./modules/zed-editor {
+    inherit pkgs;
+  };
+  programs.git = {
+    enable = true;
+    settings = {
+      user.name = "ThurgyThurg";
+      user.email = "tim@graham29.com";
+      init.defaultBranch = "main";
+    };
+  };
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "https";
+    gitCredentialHelper.enable = true;
+  };
   programs.autorandr = {
     enable = true;
     profiles = {
@@ -95,20 +111,15 @@ in {
       };
     };
   };
-  programs.zed-editor = import ./modules/zed-editor {
-    inherit pkgs;
-  };
-  programs.git = {
+  programs.bash = {
     enable = true;
-    settings = {
-      user.name = "ThurgyThurg";
-      user.email = "tim@graham29.com";
-      init.defaultBranch = "main";
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-tim";
     };
-  };
-  programs.gh = {
-    enable = true;
-    settings.git_protocol = "https";
-    gitCredentialHelper.enable = true;
+    initExtra = ''
+      if [ -r /run/agenix/github-token ]; then
+        export GH_TOKEN="$(cat /run/agenix/github-token)"
+      fi
+    '';
   };
 }
