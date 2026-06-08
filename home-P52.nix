@@ -37,7 +37,7 @@ in {
     poppler-utils
     pandoc
     zathura
-    snip
+    snipaste
     redshift
 
     (pkgs.writeShellApplication {
@@ -115,6 +115,7 @@ in {
     enable = true;
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-tim";
+      ts2 = "tailscale --socket=/run/tailscale2/tailscaled.sock";
     };
     initExtra = ''
       if [ -r /run/agenix/github-token ]; then

@@ -57,7 +57,7 @@
     wantedBy = ["multi-user.target"];
     serviceConfig = {
       ExecStartPre = "${pkgs.tailscale}/bin/tailscaled --cleanup";
-      ExecStart = "${pkgs.tailscale}/bin/tailscaled --state=/var/lib/tailscale2/tailscaled.state --socket=/run/tailscale2/tailscaled.sock --port=41642";
+      ExecStart = "${pkgs.tailscale}/bin/tailscaled --state=/var/lib/tailscale2/tailscaled.state --socket=/run/tailscale2/tailscaled.sock --port=41642 --tun=tailscale1";
       ExecStopPost = "${pkgs.tailscale}/bin/tailscaled --cleanup";
       RuntimeDirectory = "tailscale2";
       RuntimeDirectoryMode = "0755";
