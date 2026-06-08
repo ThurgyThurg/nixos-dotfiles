@@ -29,7 +29,7 @@ local blocks = {
     -- holding for custom pomordo timer block
     oxwm.bar.block.shell({
         format = "TS: {}",
-        command = "python3 $HOME/Downloads/tailscale-check.py nixos-tim",
+        command = "python3 $HOME/nixos-dotfiles/config/oxwm/tailscale-check.py nixos-tim",
         interval = 60,
         color = colors.ibm_green,
         underline = false,
