@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""
+pomoctl — command-line client for the pomodoro daemon.
+
+This is what your oxwm toolbar runs. Toolbar widgets typically work
+one of two ways, and this supports both:
+
+  1. A button runs a command on click:
+         pomoctl start 25
+         pomoctl stop
+  2. A text widget runs a command every second or two and displays
+     its stdout:
+         pomoctl status        ->  prints e.g.  "W 24:31"
+
+Exit code is 0 on success, 1 on error, so scripts can branch on it.
+"""
+
+import sys
+
+import bus
+
+
+def fmt(seconds):
+    return f"{seconds // 60:02d}:{seconds % 60:02d}"
+
+
+def main(argv):
+    if len(argv) < 1:
+        print("usage: pomoctl start [minutes] | stop | pause | status")
+        return 1
+
+    cmd = argv[0]
+    message = {"cmd": cmd}
+    if cmd == "start" and len(argv) > 1:
+        message["minutes"] = int(argv[1])
+
+    try:
+        reply = bus.send(bus.default_socket_path(), message)
+    except (FileNotFoundError, ConnectionRefusedError):
+        print("--:--")  # daemon not running; show something harmless
+        return 1
+
+    if not reply.get("ok"):
+        print(f"error: {reply.get('error')}")
+        return 1
+
+    if cmd == "status":
+        phase = reply["phase"]
+        done = reply.get("done_today", 0)
+        if phase == "idle":
+            print(f"idle ({done})")
+        else:
+            # e.g. "W 24:31 (3)" — phase, time left, pomodoros done today
+            print(f"{phase[0].upper()} {fmt(reply['remaining'])} ({done})")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

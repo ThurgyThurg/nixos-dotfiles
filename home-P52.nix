@@ -40,7 +40,7 @@ in {
     zathura
     snipaste
     redshift
-
+    (import ./packages/work-tuimer.nix {inherit pkgs;})
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [

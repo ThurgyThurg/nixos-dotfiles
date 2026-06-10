@@ -7,6 +7,5 @@ if command -v dbus-update-activation-environmnet >/dev/null 2>&1; then
     dbus-update-activation-environment DISPLAY XAUTHORITY
 fi
 
-feh --bg-scale ~/.config/oxwm/wallpaper.png &
-picom  & redshift -l 40.500664664:-80.067833062 &
+feh --bg-scale ~/.config/oxwm/wallpaper.png & picom  & redshift -l 40.500664664:-80.067833062 & python3 /home/tim/nixos-dotfiles/config/pomoctl/timerd.py &
 exec oxwm
