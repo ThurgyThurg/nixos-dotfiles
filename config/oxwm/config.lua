@@ -40,6 +40,36 @@ local blocks = {
         color = colors.fg,
         underline = false,
     }),
+    oxwm.bar.block.shell({
+        format = "",
+        command = "$HOME/nixos-dotfiles/config/pomoctl/pomoctl status",
+        interval = 1,
+        color = colors.ibm_green,
+        underline = false,
+        click = "$HOME/nixos-dotfiles/config/pomoctl/pomoctl start 25",
+    }),
+    oxwm.bar.block.shell({
+        format = "{}",
+        command = "echo pause",
+        interval = 60,
+        color = colors.ibm_green,
+        underline = false,
+        click = "$HOME/nixos-dotfiles/config/pomoctl/pomoctl pause",
+    }),
+    oxwm.bar.block.shell({
+        format = "{}",
+        command = "echo stop",
+        interval = 60,
+        color = colors.ibm_green,
+        underline = false,
+        click = "$HOME/nixos-dotfiles/config/pomoctl/pomoctl stop",
+    }),
+    oxwm.bar.block.static({
+        text = "│",
+        interval = 999999999,
+        color = colors.fg,
+        underline = false,
+    }),
     oxwm.bar.block.datetime({
         format = "{}",
         date_format = "%a, %b %d - %-I:%M %P",
@@ -129,7 +159,7 @@ oxwm.set_layout_symbol("normie", "[F]")
 oxwm.set_layout_symbol("tabbed", "[=]")
 
 oxwm.border.set_width(0)
-oxwm.border.set_focused_color(colors.ibm)
+oxwm.border.set_focused_color(colors.ibm_green)
 oxwm.border.set_unfocused_color(colors.grey)
 
 oxwm.gaps.set_smart(false)
