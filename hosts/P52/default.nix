@@ -48,6 +48,10 @@
   services.tailscale = {
     enable = true;
   };
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ gutenprint foomatic-db-ppds cups-filters ];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
