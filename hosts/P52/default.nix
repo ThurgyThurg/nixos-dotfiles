@@ -48,10 +48,7 @@
   services.tailscale = {
     enable = true;
   };
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [ gutenprint foomatic-db-ppds cups-filters ];
-  };
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -77,8 +74,10 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-
+  services.printing = {
+   drivers = with pkgs; [ gutenprint foomatic-db-ppds cups-filters ];
+   enable = true;
+  };
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
