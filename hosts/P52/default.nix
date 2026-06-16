@@ -78,6 +78,10 @@
    drivers = with pkgs; [ gutenprint foomatic-db-ppds cups-filters ];
    enable = true;
   };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.sane-airscan ];
+  };
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
@@ -98,7 +102,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "scanner" "lp"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -123,6 +127,7 @@
     thunar-archive-plugin # optional: right-click archive support
     picom
     dunst
+    simple-scan
   ];
 
   # I need to allow un-free packages
