@@ -45,9 +45,9 @@
   networking.networkmanager.enable = true;
   # enable tailscale
   # todo in future, setup secondary tailnet connection (so I can access my music at home while at work)
-  services.tailscale = {
-    enable = true;
-  };
+ # services.tailscale = {
+ #   enable = true;
+ # };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -84,10 +84,10 @@
   };
 
   # Enable bluetooth.
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
+ # hardware.bluetooth = {
+ #   enable = true;
+ #   powerOnBoot = true;
+ # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   #services.libinput.enable = true;
@@ -108,7 +108,6 @@
     neovim
     wget
     nano
-    tailscale
     impala
     nfs-utils
     rofi

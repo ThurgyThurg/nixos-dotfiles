@@ -38,8 +38,8 @@ in {
     poppler-utils
     pandoc
     zathura
-    snip
     redshift
+    flameshot
 
     (pkgs.writeShellApplication {
       name = "ns";
