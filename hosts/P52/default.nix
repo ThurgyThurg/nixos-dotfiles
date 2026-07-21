@@ -128,6 +128,8 @@
     picom
     dunst
     simple-scan
+    unzip
+    onlyoffice-desktopeditors
   ];
 
   # I need to allow un-free packages
@@ -142,6 +144,10 @@
   #fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    corefonts
+    vista-fonts
+    liberation_ttf
+    mscorefont
   ];
   hardware.nvidia = {
     modesetting.enable = true;
