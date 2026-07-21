@@ -145,9 +145,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     corefonts
-    vista-fonts
-    liberation_ttf
-    mscorefont
+
   ];
   hardware.nvidia = {
     modesetting.enable = true;
