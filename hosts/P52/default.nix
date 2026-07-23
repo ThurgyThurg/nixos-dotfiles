@@ -130,6 +130,7 @@
     simple-scan
     unzip
     onlyoffice-desktopeditors
+    codex
   ];
 
   # I need to allow un-free packages
