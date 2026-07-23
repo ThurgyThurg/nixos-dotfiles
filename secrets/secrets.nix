@@ -3,5 +3,5 @@ let
   itx = "age1vfegnh9nufga7yg9qtvuwenattaj9kz5lvx57g0xtfynln9tscdswch8pw";
 in
 {
-  "github-token.age".publicKeys = [ me ];
+  "github-token.age".publicKeys = [ P52 ];
 }
