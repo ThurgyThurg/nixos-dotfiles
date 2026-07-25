@@ -133,12 +133,11 @@
 
   programs.steam = {
     enable = true;
-    extraCompatPackages = with pkgs; {
-      proton-ge-bin,
-      proton11
-    }
-  };
 
+  };
+  programs.steam.extraCompatPackages = with pkgs; {
+    proton-ge-bin
+  }
   #fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
