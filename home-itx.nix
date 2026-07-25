@@ -80,7 +80,7 @@ in {
   programs.bash = {
     enable = true;
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-tim";
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-itx";
     };
     initExtra = ''
       if [ -r /run/agenix/github-token ]; then
