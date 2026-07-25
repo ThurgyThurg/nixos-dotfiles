@@ -119,6 +119,7 @@
     thunar-archive-plugin # optional: right-click archive support
     picom
     dunst
+    steam-run
   ];
 
   # I need to allow un-free packages
@@ -129,6 +130,14 @@
 
   programs.dconf.enable = true;
   programs.i3lock.enable = true;
+
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; {
+      proton-ge-bin,
+      proton11
+    };
+  };
 
   #fonts
   fonts.packages = with pkgs; [
