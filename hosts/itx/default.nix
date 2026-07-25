@@ -137,7 +137,7 @@
   };
   programs.steam.extraCompatPackages = with pkgs; {
     proton-ge-bin
-  }
+  };
   #fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
