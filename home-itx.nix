@@ -40,6 +40,7 @@ in {
     zathura
     redshift
     flameshot
+    orca-slicer
 
     (pkgs.writeShellApplication {
       name = "ns";
