@@ -136,7 +136,7 @@
     extraCompatPackages = with pkgs; {
       proton-ge-bin,
       proton11
-    };
+    }
   };
 
   #fonts
