@@ -42,6 +42,7 @@ in {
     flameshot
     orca-slicer
     discord
+    pamixer
 
     (pkgs.writeShellApplication {
       name = "ns";
