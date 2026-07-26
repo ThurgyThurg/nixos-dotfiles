@@ -41,6 +41,7 @@ in {
     redshift
     flameshot
     orca-slicer
+    discord
 
     (pkgs.writeShellApplication {
       name = "ns";
@@ -88,5 +89,21 @@ in {
         export GH_TOKEN="$(cat /run/agenix/github-token)"
       fi
     '';
+  };
+  programs.autorandr = {
+    enable = true;
+    profiles = {
+      "desktop" = {
+        config = {
+          DP-2 = {
+            enable = true;
+            primary = true;
+            mode = "5120x1440";
+            rate = "120.00";
+            position = "0x0";
+          };
+        };
+      };
+    };
   };
 }
