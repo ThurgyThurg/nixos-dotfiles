@@ -43,6 +43,7 @@ in {
     orca-slicer
     discord
     pamixer
+    pavucontrol
 
     (pkgs.writeShellApplication {
       name = "ns";
