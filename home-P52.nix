@@ -40,6 +40,8 @@ in {
     zathura
     flameshot
     redshift
+    pavucontrol
+    kicad
     (import ./packages/work-tuimer.nix {inherit pkgs;})
     (pkgs.writeShellApplication {
       name = "ns";
