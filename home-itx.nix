@@ -44,6 +44,7 @@ in {
     discord
     pamixer
     pavucontrol
+    stm32cubemx
 
     (pkgs.writeShellApplication {
       name = "ns";

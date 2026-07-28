@@ -42,6 +42,7 @@ in {
     redshift
     pavucontrol
     kicad
+    stm32cubemx
     (import ./packages/work-tuimer.nix {inherit pkgs;})
     (pkgs.writeShellApplication {
       name = "ns";
