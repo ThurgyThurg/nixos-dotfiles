@@ -6,6 +6,8 @@
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
+ stm32cubemx = pkgs.callPackage ../pkgs/stm32cubemx/package.nix {};
+
   configs = {
     oxwm = "oxwm";
     alacritty = "alacritty";
@@ -44,7 +46,7 @@ in {
     discord
     pamixer
     pavucontrol
-    stm32cubemx
+
 
     (pkgs.writeShellApplication {
       name = "ns";
