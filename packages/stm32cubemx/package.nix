@@ -20,7 +20,7 @@ let
       url = "https://sw-center.st.com/packs/resource/library/stm32cube_mx_v${
         builtins.replaceStrings [ "." ] [ "" ] version
       }-lin.zip";
-      hash = lib.fakeHash;
+      hash = "sha256-QHjTxT+5fnAdl7Xuk/6RcR6WB5AtziLKenvwMeJ8s1M=";
       stripRoot = false;
     };
 

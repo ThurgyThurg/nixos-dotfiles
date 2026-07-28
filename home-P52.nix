@@ -6,7 +6,7 @@
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
-  stm32cubemx = pkgs.callPackage ./pkgs/stm32cubemx/package.nix {};
+  stm32cubemx = pkgs.callPackage ./packages/stm32cubemx/package.nix {};
 
   configs = {
     oxwm = "oxwm";
