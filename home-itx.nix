@@ -74,7 +74,7 @@ in {
             enable = true;
             primary = true;
             mode = "5120x1440";
-            rate = "120.00";
+            rate = "120";
             position = "0x0";
           };
         };
