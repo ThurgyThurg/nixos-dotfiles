@@ -45,9 +45,9 @@
   networking.networkmanager.enable = true;
   # enable tailscale
   # todo in future, setup secondary tailnet connection (so I can access my music at home while at work)
- # services.tailscale = {
- #   enable = true;
- # };
+  services.tailscale = {
+    enable = true;
+  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
