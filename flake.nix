@@ -21,7 +21,7 @@
     donetick-tui = {
       url = "github:ThurgyThurg/donetick-tui";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
   };
   outputs = {
     self,
@@ -30,11 +30,19 @@
     nixos-hardware,
     agenix,
     oxwm,
+    donetick-tui,
     ...
   }: {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        {
+          nixpkgs.overlays = [
+            (final: prev: {
+              donetick-tui = donetick-tui.packages.${prev.system}.default;
+            })
+          ];
+        }
         ./hosts/P52
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default

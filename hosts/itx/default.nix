@@ -120,6 +120,8 @@
     picom
     dunst
     steam-run
+    donetick-tui
+    agenix
   ];
 
   # I need to allow un-free packages

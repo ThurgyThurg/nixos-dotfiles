@@ -127,6 +127,10 @@ in {
       if [ -r /run/agenix/github-token ]; then
         export GH_TOKEN="$(cat /run/agenix/github-token)"
       fi
+      if [ -r /run/agenix/donetick-token ]; then
+        export DONETICK_TOKEN="$(cat /run/agenix/donetick-token)"
+      fi
+      export DONETICK_URL="https://tasks.graham29.com"
     '';
   };
 }

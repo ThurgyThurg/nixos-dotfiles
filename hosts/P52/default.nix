@@ -37,7 +37,12 @@
     group = "users";
     mode = "0400";
   };
-
+  age.secrets.donetick-token = {
+    file = ../.././secrets/donetick-token.age;
+    owner = "tim";
+    group = "users";
+    mode = "0400";
+  };
   # NETWORKING
   # Set host name.
   networking.hostName = "nixos-tim";
@@ -131,6 +136,8 @@
     unzip
     onlyoffice-desktopeditors
     codex
+    donetick-tui
+    agenix-cli
   ];
 
   # I need to allow un-free packages

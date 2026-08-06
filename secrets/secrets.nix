@@ -4,4 +4,8 @@ let
 in
 {
   "github-token.age".publicKeys = [ P52 ];
+  "donetick-token.age".publicKeys = [P52];
 }
+
+
+#nix run github:ryantm/agenix -- -e donetick-token.age
