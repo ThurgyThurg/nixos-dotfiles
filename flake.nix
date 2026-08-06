@@ -18,6 +18,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    donetick-tui = {
+      url = "github:ThurgyThurg/donetick-tui";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
   };
   outputs = {
     self,

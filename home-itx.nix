@@ -46,6 +46,7 @@ in {
     discord
     pamixer
     pavucontrol
+    inputs.donetick-tui.packages${pkgs.system}.default
 
 
     (pkgs.writeShellApplication {
