@@ -4,7 +4,7 @@ let
 in
 {
   "github-token.age".publicKeys = [ P52 ];
-  "donetick-token.age".publicKeys = [P52];
+  "donetick-token.age".publicKeys = [ P52 ];
 }
 
 
