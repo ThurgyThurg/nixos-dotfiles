@@ -43,6 +43,12 @@
     group = "users";
     mode = "0400";
   };
+  age.secrets.cf-access-client-secret = {
+    file = ../.././secrets/cf-access-client-secret.age;
+    owner = "tim";
+    group = "users";
+    mode = "0400";
+  };
   # NETWORKING
   # Set host name.
   networking.hostName = "nixos-tim";

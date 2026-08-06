@@ -5,6 +5,7 @@ in
 {
   "github-token.age".publicKeys = [ P52 ];
   "donetick-token.age".publicKeys = [ P52 ];
+  "cf-access-client-secret.age".publicKeys = [ P52 ];
 }
 
 

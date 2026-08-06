@@ -131,6 +131,11 @@ in {
         export DONETICK_TOKEN="$(cat /run/agenix/donetick-token)"
       fi
       export DONETICK_URL="https://tasks.graham29.com"
-    '';
+      if [ -r /run/agenix/cf-access-client-secret ]; then
+        export CF_ACCESS_CLIENT_SECRET="$(cat /run/agenix/cf-access-client-secret)"
+      fi
+      export CF_ACCESS_CLIENT_ID="b75e77fbd652be36137ab8205d3bb467.access"
+    ''
+    ;
   };
 }
