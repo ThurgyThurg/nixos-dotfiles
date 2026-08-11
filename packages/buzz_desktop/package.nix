@@ -20,7 +20,13 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraPkgs = pkgs: [ pkgs.elfutils pkgs.zstd ];
+  extraPkgs = pkgs: with pkgs; [
+    elfutils
+    zstd
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gstreamer
+  ];
 
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/Buzz.desktop $out/share/applications/${pname}.desktop
