@@ -11,7 +11,7 @@ let
   src = fetchurl {
     url = "https://github.com/block/buzz/releases/download/desktop-v${version}/Buzz_${version}_amd64.AppImage";
     # Run `nix build`, it will fail and print the correct hash to paste here.
-    hash = lib.fakeHash;
+    hash = sha256:5af4c03db35385c561a99564458b445b6659c252c1ac72daf2a1c85a0c0a4a27;
   };
 
   appimageContents = appimageTools.extractType2 { inherit pname version src; };
