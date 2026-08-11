@@ -2,6 +2,7 @@
   appimageTools,
   fetchurl,
   lib,
+  pkgs,
 }:
 
 let
@@ -19,10 +20,12 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
+  extraPkgs = pkgs: [ pkgs.elfutils ];
+
   extraInstallCommands = ''
-    install -m 444 -D ${appimageContents}/buzz-desktop.desktop $out/share/applications/${pname}.desktop
+    install -m 444 -D ${appimageContents}/Buzz.desktop $out/share/applications/${pname}.desktop
     substituteInPlace $out/share/applications/${pname}.desktop \
-      --replace-fail 'Exec=AppRun' 'Exec=${pname}'
+      --replace-fail 'Exec=buzz-desktop' 'Exec=${pname}'
     cp -r ${appimageContents}/usr/share/icons $out/share
   '';
 
