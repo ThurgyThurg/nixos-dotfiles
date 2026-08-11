@@ -144,7 +144,6 @@
     codex
     donetick-tui
     agenix-cli
-    buzz
   ];
 
   # I need to allow un-free packages
