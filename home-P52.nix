@@ -45,6 +45,7 @@ in {
     pavucontrol
     kicad
     stm32cubemx
+    buzz
     (import ./packages/work-tuimer.nix {inherit pkgs;})
     (pkgs.writeShellApplication {
       name = "ns";
