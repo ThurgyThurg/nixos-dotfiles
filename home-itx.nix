@@ -7,7 +7,7 @@
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
  stm32cubemx = pkgs.callPackage ../pkgs/stm32cubemx/package.nix {};
-
+ buzz = pkgs.callPackage ./packages/buzz_desktop/package.nix {};
   configs = {
     oxwm = "oxwm";
     alacritty = "alacritty";
