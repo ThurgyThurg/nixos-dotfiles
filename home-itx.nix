@@ -46,7 +46,6 @@ in {
     discord
     pamixer
     pavucontrol
-    donetick-tui
     buzz
 
     (pkgs.writeShellApplication {
