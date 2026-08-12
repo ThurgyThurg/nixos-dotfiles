@@ -47,7 +47,7 @@ in {
     pamixer
     pavucontrol
     donetick-tui
-
+    buzz
 
     (pkgs.writeShellApplication {
       name = "ns";
