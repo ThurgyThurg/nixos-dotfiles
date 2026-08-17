@@ -159,13 +159,13 @@
   };
 
   fileSystems."/mnt/NAS" = {
-    device = "//192.168.0.70/tim/";
+    device = "//192.168.0.70/tim";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
-    in ["${automount_opts},credentials=../../secrets/smb-secrets"];
+    in ["${automount_opts},credentials=/home/tim/nixos-dotfiles/secrets/smb-secrets"];
   };
 # Rekey from P52 before uncommenting.
 #     initExtra = ''
