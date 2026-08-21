@@ -46,14 +46,12 @@
             (final: prev: {
               donetick-tui = donetick-tui.packages.${prev.system}.default;
             })
-          ];
         }
         ./hosts/P52
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         openlogi.nixosModules.default
-          { programs.openlogi.enable = true; }
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -70,7 +68,6 @@
         ./hosts/itx
         agenix.nixosModules.default
         openlogi.nixosModules.default
-          { programs.openlogi.enable = true; }
         home-manager.nixosModules.home-manager
         {
           home-manager = {
