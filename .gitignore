@@ -16,3 +16,5 @@ __pycache__/
 *.pem
 .env
 smb-secrets
+config/pomoctl/__pycache__/
+config/pomoctl/__pycache__/bus.cpython-313.pyc
