@@ -3,9 +3,9 @@ let
   itx = "age1vfegnh9nufga7yg9qtvuwenattaj9kz5lvx57g0xtfynln9tscdswch8pw";
 in
 {
-  "github-token.age".publicKeys = [ P52 ];
-  "donetick-token.age".publicKeys = [ P52 ];
-  "cf-access-client-secret.age".publicKeys = [ P52 ];
+  "github-token.age".publicKeys = [ P52 itx ];
+  "donetick-token.age".publicKeys = [ P52 itx ];
+  "cf-access-client-secret.age".publicKeys = [ P52 itx ];
 }
 
 
