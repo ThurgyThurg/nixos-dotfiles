@@ -35,7 +35,7 @@
     agenix,
     oxwm,
     donetick-tui,
-    openlogi
+    openlogi,
     ...
   }: {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
