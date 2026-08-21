@@ -82,7 +82,6 @@
         }
       ];
     };
-
     nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -102,3 +101,4 @@
       ];
     };
   };
+}
