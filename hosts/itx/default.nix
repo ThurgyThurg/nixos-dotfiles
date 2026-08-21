@@ -28,15 +28,25 @@
   time.timeZone = "America/New_York";
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # setup agenix paths for encrypted keys -- need to re-key before adding.
- # age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
-  # github key encryption
- # age.secrets.github-token = {
- #   file = ../../secrets/github-token.age;
- #   owner = "tim";
- #   group = "users";
- #   mode = "0400";
- # };
+  age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
+  age.secrets.github-token = {
+    file = ../../secrets/github-token.age;
+    owner = "tim";
+    group = "users";
+    mode = "0400";
+  };
+  age.secrets.donetick-token = {
+    file = ../../secrets/donetick-token.age;
+    owner = "tim";
+    group = "users";
+    mode = "0400";
+  };
+  age.secrets.cf-access-client-secret = {
+    file = ../../secrets/cf-access-client-secret.age;
+    owner = "tim";
+    group = "users";
+    mode = "0400";
+  };
 
   # NETWORKING
   # Set host name.
