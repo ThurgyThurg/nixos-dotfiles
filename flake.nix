@@ -23,12 +23,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     openlogi = {
-        url = "github:AprilNEA/OpenLogi";
-      };
+      url = "github:AprilNEA/OpenLogi";
+    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-      };
+    };
   };
   outputs = {
     self,
@@ -42,8 +42,8 @@
     rust-overlay,
     ...
   }: let
-    openlogiModule = { pkgs, ... }: {
-      nixpkgs.overlays = [ rust-overlay.overlays.default ];
+    openlogiModule = {pkgs, ...}: {
+      nixpkgs.overlays = [rust-overlay.overlays.default];
       programs.openlogi = {
         enable = true;
         package =
@@ -55,57 +55,48 @@
           };
       };
     };
+
+    mkSystem = {
+      host,
+      hm-config,
+      extraModules ? [],
+    }:
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules =
+          [
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  donetick-tui = donetick-tui.packages.${prev.stdenv.hostPlatform.system}.default;
+                })
+              ];
+            }
+            agenix.nixosModules.default
+            openlogi.nixosModules.default
+            openlogiModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.tim = import hm-config;
+                backupFileExtension = "backup";
+              };
+            }
+          ]
+          ++ extraModules
+          ++ [host];
+      };
   in {
-    nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        {
-          nixpkgs.overlays = [
-            (final: prev: {
-              donetick-tui = donetick-tui.packages.${prev.system}.default;
-            })
-          ];
-        }
-        ./hosts/P52
-        nixos-hardware.nixosModules.lenovo-thinkpad-p52
-        agenix.nixosModules.default
-        openlogi.nixosModules.default
-        openlogiModule
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.tim = import ./home-P52.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
+    nixosConfigurations.nixos-tim = mkSystem {
+      host = ./hosts/P52;
+      hm-config = ./home-P52.nix;
+      extraModules = [nixos-hardware.nixosModules.lenovo-thinkpad-p52];
     };
-    nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        {
-          nixpkgs.overlays = [
-            (final: prev: {
-              donetick-tui = donetick-tui.packages.${prev.system}.default;
-            })
-          ];
-        }
-        ./hosts/itx
-        agenix.nixosModules.default
-        openlogi.nixosModules.default
-        openlogiModule
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.tim = import ./home-itx.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
+    nixosConfigurations.nixos-itx = mkSystem {
+      host = ./hosts/itx;
+      hm-config = ./home-itx.nix;
     };
   };
 }
