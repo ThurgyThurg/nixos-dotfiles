@@ -22,7 +22,7 @@
       url = "github:ThurgyThurg/donetick-tui";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    inputs.openlogi = {
+    openlogi = {
         url = "github:AprilNEA/OpenLogi";
         inputs.nixpkgs.follows = "nixpkgs";
       };
