@@ -26,7 +26,7 @@ in {
   home.file.".xinitrc".source = create_symlink "${dotfiles}/xinitrc";
   home.file.".config/openlogi".source =
     config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos-dotfiles/openlogi";
+      "${config.home.homeDirectory}/nixos-dotfiles/config/openlogi";
   home.packages = with pkgs; [
     python3
     libreoffice-fresh
