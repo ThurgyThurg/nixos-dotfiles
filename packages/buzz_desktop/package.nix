@@ -71,17 +71,17 @@ buildFHSEnv {
     libglvnd
     mesa
     libdrm
-    xorg.libX11
-    xorg.libXext
-    xorg.libXrender
-    xorg.libXi
-    xorg.libXcursor
-    xorg.libXdamage
-    xorg.libXfixes
-    xorg.libXcomposite
-    xorg.libXrandr
-    xorg.libXtst
-    xorg.libxcb
+    libx11
+    libxext
+    libxrender
+    libxi
+    libxcursor
+    libxdamage
+    libxfixes
+    libxcomposite
+    libxrandr
+    libxtst
+    libxcb
     wayland
     libxkbcommon
     fontconfig
