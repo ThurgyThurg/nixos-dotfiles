@@ -1,0 +1,123 @@
+schema_version = 4
+selected_device = "receiver:e4359d5e:slot:4"
+
+[app_settings]
+launch_at_login = false
+check_for_updates = false
+auto_install_updates = false
+update_prompt_seen = true
+show_in_menu_bar = true
+capture_mouse_events = true
+auto_download_assets = true
+asset_source = "automatic"
+thumbwheel_sensitivity = 14
+appearance = "dark"
+
+[devices]
+
+[devices."camera:046d:08e5:serial:82c4df5f"]
+camera_profile = "default"
+
+[devices."camera:046d:08e5:serial:82c4df5f".camera_controls]
+zoom = 118
+focus_auto = 0
+exposure_auto = 0
+white_balance_auto = 1
+focus = 35
+exposure = 420
+brightness = 128
+contrast = 128
+saturation = 128
+sharpness = 128
+white_balance = 4000
+
+[devices."receiver:e4359d5e:slot:3"]
+
+[devices."receiver:e4359d5e:slot:3".identity]
+display_name = "MX Master 3"
+kind = "mouse"
+codename = "ERGO K860"
+
+[devices."receiver:e4359d5e:slot:3".identity.model_info]
+entity_count = 3
+unit_id = [
+    0,
+    0,
+    0,
+    0,
+]
+model_ids = [
+    45091,
+    16514,
+    0,
+]
+extended_model_id = 0
+
+[devices."receiver:e4359d5e:slot:3".bindings]
+DpiToggle = "ToggleSmartShift"
+GestureButton = "Find"
+
+[devices."receiver:e4359d5e:slot:3".disabled_gestures.GestureButton]
+Up = "MissionControl"
+Down = "ShowDesktop"
+Left = "PrevTab"
+Right = "NextTab"
+Click = "AppExpose"
+
+[keyboard]
+
+[keyboard.bindings]
+
+[keyboard.bindings.f16]
+RunShellCommand = "/etc/profiles/per-user/tim/bin/flameshot gui"
+
+[devices."receiver:e4359d5e:slot:3".identity.model_info.transports]
+usb = false
+equad = true
+btle = true
+bluetooth = false
+
+[devices."receiver:e4359d5e:slot:3".identity.capabilities]
+buttons = true
+pointer = true
+lighting = false
+scroll_inversion = true
+hires_wheel = true
+thumbwheel = true
+haptic_feedback = false
+haptic_panel = false
+
+[devices."receiver:e4359d5e:slot:4".identity]
+display_name = "Ergo K860"
+kind = "keyboard"
+
+[devices."receiver:e4359d5e:slot:4".identity.model_info]
+entity_count = 3
+unit_id = [
+    0,
+    0,
+    0,
+    0,
+]
+model_ids = [
+    45913,
+    16520,
+    0,
+]
+extended_model_id = 0
+
+[devices."receiver:e4359d5e:slot:4".identity.model_info.transports]
+usb = false
+equad = true
+btle = true
+bluetooth = false
+
+[devices."receiver:e4359d5e:slot:4".identity.capabilities]
+buttons = true
+pointer = false
+lighting = false
+scroll_inversion = false
+hires_wheel = false
+thumbwheel = false
+haptic_feedback = false
+haptic_panel = false

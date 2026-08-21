@@ -24,7 +24,9 @@ in {
   home.homeDirectory = "/home/tim";
   home.stateVersion = "25.11";
   home.file.".xinitrc".source = create_symlink "${dotfiles}/xinitrc";
-
+  home.file.".config/openlogi".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixos-dotfiles/openlogi";
   home.packages = with pkgs; [
     python3
     libreoffice-fresh

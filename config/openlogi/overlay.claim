@@ -1,0 +1,6 @@
+# succession 1
+run = 11001556752753776247
+compat = 23
+pid = 3644491
+started_at = 1787323854
+image = /nix/store/v6vv0cs0ksvg0hgiy1g6ffhi59mkrs7v-openlogi-0.7.4/bin/openlogi-overlay
