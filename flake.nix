@@ -39,9 +39,23 @@
     oxwm,
     donetick-tui,
     openlogi,
-    rust-overlay
+    rust-overlay,
     ...
-  }: {
+  }: let
+    openlogiModule = { pkgs, ... }: {
+      nixpkgs.overlays = [ rust-overlay.overlays.default ];
+      programs.openlogi = {
+        enable = true;
+        package =
+          openlogi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+            rustPlatform = pkgs.makeRustPlatform {
+              cargo = pkgs.rust-bin.stable."1.98.0".minimal;
+              rustc = pkgs.rust-bin.stable."1.98.0".minimal;
+            };
+          };
+      };
+    };
+  in {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -56,20 +70,8 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default
         openlogi.nixosModules.default
-        ({ pkgs, system, ... }: {
-          nixpkgs.overlays = [ rust-overlay.overlays.default ];
-          programs.openlogi = {
-            enable = true;
-            package = openlogi.packages.${system}.default.override {
-              rustPlatform = pkgs.makeRustPlatform {
-                cargo = pkgs.rust-bin.stable."1.98.0".minimal;
-                rustc = pkgs.rust-bin.stable."1.98.0".minimal;
-              };
-          };
-        };
-        })
+        openlogiModule
         home-manager.nixosModules.home-manager
-
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -80,13 +82,14 @@
         }
       ];
     };
+
     nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hosts/itx
         agenix.nixosModules.default
         openlogi.nixosModules.default
-          { programs.openlogi.enable = true; }
+        openlogiModule
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -99,4 +102,3 @@
       ];
     };
   };
-}
