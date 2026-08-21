@@ -25,6 +25,10 @@
     openlogi = {
         url = "github:AprilNEA/OpenLogi";
       };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      };
   };
   outputs = {
     self,
@@ -35,6 +39,7 @@
     oxwm,
     donetick-tui,
     openlogi,
+    rust-overlay
     ...
   }: {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
