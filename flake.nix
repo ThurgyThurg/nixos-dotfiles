@@ -22,6 +22,10 @@
       url = "github:ThurgyThurg/donetick-tui";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.openlogi = {
+        url = "github:AprilNEA/OpenLogi";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
   };
   outputs = {
     self,
@@ -31,6 +35,7 @@
     agenix,
     oxwm,
     donetick-tui,
+    openlogi
     ...
   }: {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
@@ -47,6 +52,8 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager
+        openlogi.nixosModules.default
+          { programs.openlogi.enable = true; }
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -62,6 +69,8 @@
       modules = [
         ./hosts/itx
         agenix.nixosModules.default
+        openlogi.nixosModules.default
+          { programs.openlogi.enable = true; }
         home-manager.nixosModules.home-manager
         {
           home-manager = {
