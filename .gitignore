@@ -9,6 +9,7 @@ result-*
 *.swp
 *~
 .DS_Store
+__pycache__/
 
 # Secrets — adjust to match your actual filenames
 *.key
