@@ -123,6 +123,7 @@
     cifs-utils
     unzip
     onlyoffice-desktopeditors
+    donetick-tui
   ];
 
   # I need to allow un-free packages
