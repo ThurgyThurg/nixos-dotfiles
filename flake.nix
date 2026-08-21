@@ -24,7 +24,6 @@
     };
     openlogi = {
         url = "github:AprilNEA/OpenLogi";
-        inputs.nixpkgs.follows = "nixpkgs";
       };
   };
   outputs = {
