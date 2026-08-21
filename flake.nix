@@ -85,6 +85,13 @@
     nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        {
+          nixpkgs.overlays = [
+            (final: prev: {
+              donetick-tui = donetick-tui.packages.${prev.system}.default;
+            })
+          ];
+        }
         ./hosts/itx
         agenix.nixosModules.default
         openlogi.nixosModules.default
