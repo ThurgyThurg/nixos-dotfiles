@@ -49,7 +49,7 @@ in {
     pamixer
     pavucontrol
     buzz
-    mcp-mcp-nixos
+    mcp-nixos
 
     (pkgs.writeShellApplication {
       name = "ns";
