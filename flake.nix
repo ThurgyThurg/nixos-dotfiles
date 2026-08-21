@@ -22,6 +22,13 @@
       url = "github:ThurgyThurg/donetick-tui";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    openlogi = {
+        url = "github:AprilNEA/OpenLogi";
+      };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      };
   };
   outputs = {
     self,
@@ -31,8 +38,24 @@
     agenix,
     oxwm,
     donetick-tui,
+    openlogi,
+    rust-overlay,
     ...
-  }: {
+  }: let
+    openlogiModule = { pkgs, ... }: {
+      nixpkgs.overlays = [ rust-overlay.overlays.default ];
+      programs.openlogi = {
+        enable = true;
+        package =
+          openlogi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+            rustPlatform = pkgs.makeRustPlatform {
+              cargo = pkgs.rust-bin.stable."1.98.0".minimal;
+              rustc = pkgs.rust-bin.stable."1.98.0".minimal;
+            };
+          };
+      };
+    };
+  in {
     nixosConfigurations.nixos-tim = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -46,6 +69,8 @@
         ./hosts/P52
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default
+        openlogi.nixosModules.default
+        openlogiModule
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -57,11 +82,14 @@
         }
       ];
     };
+
     nixosConfigurations.nixos-itx = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hosts/itx
         agenix.nixosModules.default
+        openlogi.nixosModules.default
+        openlogiModule
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -74,4 +102,3 @@
       ];
     };
   };
-}
