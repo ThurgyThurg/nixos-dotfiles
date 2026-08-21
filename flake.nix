@@ -52,6 +52,7 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default
         openlogi.nixosModules.default
+          { programs.openlogi.enable = true; }
         home-manager.nixosModules.home-manager
 
         {
