@@ -51,7 +51,15 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-p52
         agenix.nixosModules.default
         openlogi.nixosModules.default
-          { programs.openlogi.enable = true; }
+          { programs.openlogi = {
+              enable = true;
+              package = pkgs.openlogi.override {
+                rustPlatform = pkgs.makeRustPlatform {
+                  cargo = pkgs.rust-bin.stable."1.98.0".minimal;
+                  rustc = pkgs.rust-bin.stable."1.98.0".minimal;
+                };
+              };
+          }
         home-manager.nixosModules.home-manager
 
         {
