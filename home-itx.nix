@@ -17,9 +17,9 @@
   ];
 
   xdg.mimeApps.defaultApplications = {
-    "text/html" = "chromium.desktop";
-    "x-scheme-handler/http" = "chromium.desktop";
-    "x-scheme-handler/https" = "chromium.desktop";
+    "text/html" = "chromium-browser.desktop";
+    "x-scheme-handler/http" = "chromium-browser.desktop";
+    "x-scheme-handler/https" = "chromium-browser.desktop";
   };
 
 
