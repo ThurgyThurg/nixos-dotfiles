@@ -12,6 +12,8 @@
     mcp-nixos
   ];
 
+
+
   programs.autorandr = {
     enable = true;
     profiles = {
@@ -31,7 +33,7 @@
       };
     };
   };
-
+  programs.nix-ld.enable = true;
   programs.bash.shellAliases = {
     nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-itx";
   };
