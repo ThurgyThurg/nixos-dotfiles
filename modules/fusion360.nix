@@ -80,7 +80,7 @@ let
   # Replaces launch-fusion.sh.
   fusion-launch = pkgs.writeShellApplication {
     name = "fusion360";
-    runtimeInputs = [ pkgs.umu-launcher pkgs.findutils pkgs.coreutils ];
+    runtimeInputs = [ pkgs.umu-launcher pkgs.findutils pkgs.coreutils pkgs.gnugrep ];
     text = ''
       ${preamble}
 
@@ -91,7 +91,16 @@ let
         exit 1
       fi
 
-      GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$FUSION" "''${1:-}"
+      BUSNAME_FILE="$STEAM_COMPAT_DATA_PATH/container-bus-name"
+      rm -f "$BUSNAME_FILE"
+
+      # Pipe output so adskidmgr-handler can inject into this container
+      # rather than spawning a second one (which breaks Wine IPC).
+      GAMEID=0 PROTONPATH="$(dirname "$PROTON")" umu-run "$FUSION" "''${1:-}" 2>&1 | \
+        tee >(grep -o 'bus-name=[^ ]*' | head -n1 | cut -d= -f2 | tr -d '\n' \
+          > "$BUSNAME_FILE") >&2 || true
+
+      rm -f "$BUSNAME_FILE"
     '';
   };
 
@@ -118,8 +127,25 @@ let
       fi
 
       echo "IDM: $IDM"
-      echo "Launching AdskIdentityManager.exe..."
-      GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$IDM" "''${1:-}"
+
+      BUSNAME_FILE="$STEAM_COMPAT_DATA_PATH/container-bus-name"
+      BUSNAME=""
+      if [ -f "$BUSNAME_FILE" ]; then
+        BUSNAME=$(cat "$BUSNAME_FILE")
+      fi
+
+      LAUNCH_CLIENT=$(find "$HOME/.local/share/umu" \
+        -name steam-runtime-launch-client -type f 2>/dev/null | sort | tail -n1)
+      WINE64="$(dirname "$PROTON")/files/bin/wine64"
+
+      if [ -n "$BUSNAME" ] && [ -n "$LAUNCH_CLIENT" ] && [ -x "$LAUNCH_CLIENT" ]; then
+        echo "Injecting into existing Fusion 360 container (bus-name: $BUSNAME)"
+        export WINEPREFIX="$STEAM_COMPAT_DATA_PATH/pfx"
+        exec "$LAUNCH_CLIENT" --bus-name="$BUSNAME" -- "$WINE64" "$IDM" "''${1:-}"
+      else
+        echo "No running container found (BUSNAME='$BUSNAME' LAUNCH_CLIENT='$LAUNCH_CLIENT'), starting new umu-run"
+        GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$IDM" "''${1:-}"
+      fi
     '';
   };
 
