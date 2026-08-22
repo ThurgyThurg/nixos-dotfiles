@@ -3,7 +3,10 @@
   pkgs,
   ...
 }: {
-  imports = [./modules/common-home.nix];
+  imports = [
+    ./modules/common-home.nix
+    ./modules/fusion360.nix
+  ];
 
   home.packages = with pkgs; [
     orca-slicer
