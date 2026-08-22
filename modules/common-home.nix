@@ -44,6 +44,7 @@ in {
     pavucontrol
     buzz
     remmina
+    freecad
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
