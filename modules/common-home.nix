@@ -43,7 +43,7 @@ in {
     redshift
     pavucontrol
     buzz
-    rustdesk-flutter
+    remmina
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
