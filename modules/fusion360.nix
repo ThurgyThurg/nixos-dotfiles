@@ -144,12 +144,11 @@ let
         -path "*/pressure-vessel/bin/steam-runtime-launch-client" \
         -not -path "*/var/tmp*" \
         -type f 2>/dev/null | head -n1)
-      WINE64="$(dirname "$PROTON")/files/bin/wine64"
 
       if [ -n "$BUSNAME" ] && [ -n "$LAUNCH_CLIENT" ] && [ -x "$LAUNCH_CLIENT" ]; then
         echo "Injecting into existing Fusion 360 container (bus-name: $BUSNAME)"
         export WINEPREFIX="$STEAM_COMPAT_DATA_PATH/pfx"
-        exec "$LAUNCH_CLIENT" --bus-name="$BUSNAME" -- "$WINE64" "$IDM" "''${1:-}"
+        exec "$LAUNCH_CLIENT" --bus-name="$BUSNAME" -- wine "$IDM" "''${1:-}"
       else
         echo "No running container found (BUSNAME='$BUSNAME' LAUNCH_CLIENT='$LAUNCH_CLIENT'), starting new umu-run"
         GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$IDM" "''${1:-}"
