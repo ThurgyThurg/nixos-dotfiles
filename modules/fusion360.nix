@@ -100,7 +100,15 @@ let
     name = "adskidmgr-handler";
     runtimeInputs = [ pkgs.umu-launcher pkgs.findutils pkgs.coreutils ];
     text = ''
+      LOGFILE="/tmp/adskidmgr-handler.log"
+      exec >> "$LOGFILE" 2>&1
+      echo "=== $(date) ==="
+      echo "Args: ''${*:-<none>}"
+
       ${preamble}
+
+      echo "PROTON: $PROTON"
+      echo "STEAM_COMPAT_DATA_PATH: $STEAM_COMPAT_DATA_PATH"
 
       IDM=$(find "$STEAM_COMPAT_DATA_PATH" -name AdskIdentityManager.exe \
         2>/dev/null | head -n1 || true)
@@ -109,6 +117,8 @@ let
         exit 1
       fi
 
+      echo "IDM: $IDM"
+      echo "Launching AdskIdentityManager.exe..."
       GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$IDM" "''${1:-}"
     '';
   };
