@@ -28,6 +28,10 @@ let
     export DXVK_ASYNC=1
     export NO_AT_BRIDGE=1
     export WINEDLLOVERRIDES="bcp47langs=;NuDiagnostics=;NuDiagnostics10="
+    # Wine doesn't apply DST, so it reports EST (UTC-5) instead of EDT (UTC-4).
+    # Fusion 360 compares local clock directly against server UTC — setting TZ=UTC
+    # makes Wine report UTC as local time, so both sides match.
+    export TZ=UTC
     export STEAM_COMPAT_DATA_PATH="$HOME/${prefixDir}"
     export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.local/share/Steam"
     mkdir -p "$STEAM_COMPAT_DATA_PATH" "$STEAM_COMPAT_CLIENT_INSTALL_PATH"
