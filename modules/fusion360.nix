@@ -66,7 +66,7 @@ let
       fi
       if [ -z "$EXE" ]; then
         echo "No Fusion installer found. Download it from Autodesk into" >&2
-        echo "~/Downloads, or pass the path: fusion360-install /path/to.exe" >&2
+        echo "$HOME/Downloads, or pass the path: fusion360-install /path/to.exe" >&2
         exit 1
       fi
 
