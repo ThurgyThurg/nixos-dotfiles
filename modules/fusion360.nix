@@ -55,7 +55,7 @@ let
   # One-time installer. Replaces installer.sh's proton-run section only.
   fusion-install = pkgs.writeShellApplication {
     name = "fusion360-install";
-    runtimeInputs = [ pkgs.steam-run pkgs.findutils pkgs.coreutils ];
+    runtimeInputs = [ pkgs.umu-launcher pkgs.findutils pkgs.coreutils ];
     text = ''
       ${preamble}
 
@@ -70,17 +70,17 @@ let
         exit 1
       fi
 
-      echo "Installing with: $PROTON"
+      echo "Installing with: $PROTON (via umu-launcher)"
       echo "Installer:       $EXE"
       echo "Do NOT log in when the login screen appears during setup."
-      exec steam-run "$PROTON" run "$EXE"
+      GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$EXE"
     '';
   };
 
   # Replaces launch-fusion.sh.
   fusion-launch = pkgs.writeShellApplication {
     name = "fusion360";
-    runtimeInputs = [ pkgs.steam-run pkgs.findutils pkgs.coreutils ];
+    runtimeInputs = [ pkgs.umu-launcher pkgs.findutils pkgs.coreutils ];
     text = ''
       ${preamble}
 
@@ -91,14 +91,14 @@ let
         exit 1
       fi
 
-      exec steam-run "$PROTON" run "$FUSION" "''${1:-}"
+      GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$FUSION" "''${1:-}"
     '';
   };
 
   # Replaces the adskidmgr-handler.sh heredoc.
   adsk-idmgr = pkgs.writeShellApplication {
     name = "adskidmgr-handler";
-    runtimeInputs = [ pkgs.steam-run pkgs.findutils pkgs.coreutils ];
+    runtimeInputs = [ pkgs.umu-launcher pkgs.findutils pkgs.coreutils ];
     text = ''
       ${preamble}
 
@@ -109,13 +109,23 @@ let
         exit 1
       fi
 
-      exec steam-run "$PROTON" run "$IDM" "''${1:-}"
+      GAMEID=0 PROTONPATH="$(dirname "$PROTON")" exec umu-run "$IDM" "''${1:-}"
+    '';
+  };
+
+  fusion-kill = pkgs.writeShellApplication {
+    name = "fusion360-kill";
+    runtimeInputs = [ pkgs.procps ];
+    text = ''
+      pkill -f "Fusion360.exe" || true
+      pkill -f "AdskIdentityManager.exe" || true
+      pkill -f "umu-run" || true
     '';
   };
 
 in
 {
-  home.packages = [ fusion-install fusion-launch adsk-idmgr ];
+  home.packages = [ fusion-install fusion-launch adsk-idmgr fusion-kill ];
 
   # Replaces the .desktop heredocs + update-desktop-database.
   # Upstream only made hidden URI handlers; this also gives you a real menu entry.
