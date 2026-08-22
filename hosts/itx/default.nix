@@ -24,6 +24,25 @@
     extraCompatPackages = with pkgs; [proton-ge-bin];
   };
 
+  programs.firefox.policies = {
+    AutoLaunchProtocolsFromOrigins = [
+      {
+        protocol = "adskidmgr";
+        allowed_origins = [
+          "https://accounts.autodesk.com"
+          "https://access.autodesk.com"
+          "https://www.autodesk.com"
+        ];
+      }
+    ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
+  };
+
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
   hardware.nvidia = {
