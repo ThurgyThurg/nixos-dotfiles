@@ -27,7 +27,7 @@ let
     export PROTON_USE_WINED3D=0
     export DXVK_ASYNC=1
     export NO_AT_BRIDGE=1
-    export WINEDLLOVERRIDES="bcp47langs="
+    export WINEDLLOVERRIDES="bcp47langs=;NuDiagnostics=;NuDiagnostics10="
     export STEAM_COMPAT_DATA_PATH="$HOME/${prefixDir}"
     export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.local/share/Steam"
     mkdir -p "$STEAM_COMPAT_DATA_PATH" "$STEAM_COMPAT_CLIENT_INSTALL_PATH"
