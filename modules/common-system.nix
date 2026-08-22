@@ -14,6 +14,7 @@
   };
 
   time.timeZone = "America/New_York";
+  services.timesyncd.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   age.identityPaths = ["/home/tim/.age/agenix-identity.txt"];
