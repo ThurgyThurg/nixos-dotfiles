@@ -29,6 +29,7 @@
       {
         protocol = "adskidmgr";
         allowed_origins = [
+          "https://signin.autodesk.com"
           "https://accounts.autodesk.com"
           "https://access.autodesk.com"
           "https://www.autodesk.com"
