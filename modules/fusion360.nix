@@ -11,10 +11,10 @@
 # 1. home-itx.nix — uncomment the import:
 #      ./modules/fusion360.nix
 #
-# 2. hosts/itx/default.nix — uncomment these three blocks:
+# 2. hosts/itx/default.nix — uncomment these two blocks:
 #      programs.nix-ld.enable = true;
 #      programs.firefox.policies { AutoLaunchProtocolsFromOrigins ... }
-#      xdg.portal { ... }
+#    (xdg.portal is already enabled for system-wide dark mode support)
 #
 # 3. Run: nrs
 #

@@ -41,12 +41,13 @@
   #   ];
   # };
 
-  # Fusion 360: xdg-desktop-portal lets the Steam Runtime open URLs in the host browser
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  #   config.common.default = "gtk";
-  # };
+  # Provides org.freedesktop.portal.Settings so Firefox and other apps detect system dark mode.
+  # Also needed by Fusion 360 for Steam Runtime URL opening — see fusion360.nix.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
+  };
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
