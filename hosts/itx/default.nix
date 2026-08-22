@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [
     steam-run
     cifs-utils
-    protonup-qt
+    #protonup-qt  -- add back in for fusion
   ];
 
   # programs.nix-ld.enable = true;  # needed for Fusion 360 (steam-runtime-launch-client)
