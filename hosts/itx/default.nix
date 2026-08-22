@@ -19,32 +19,34 @@
     protonup-qt
   ];
 
-  programs.nix-ld.enable = true;
+  # programs.nix-ld.enable = true;  # needed for Fusion 360 (steam-runtime-launch-client)
 
   programs.steam = {
     enable = true;
     extraCompatPackages = with pkgs; [proton-ge-bin];
   };
 
-  programs.firefox.policies = {
-    AutoLaunchProtocolsFromOrigins = [
-      {
-        protocol = "adskidmgr";
-        allowed_origins = [
-          "https://signin.autodesk.com"
-          "https://accounts.autodesk.com"
-          "https://access.autodesk.com"
-          "https://www.autodesk.com"
-        ];
-      }
-    ];
-  };
+  # Fusion 360: allow browser to hand off adskidmgr:// OAuth callbacks without a dialog
+  # programs.firefox.policies = {
+  #   AutoLaunchProtocolsFromOrigins = [
+  #     {
+  #       protocol = "adskidmgr";
+  #       allowed_origins = [
+  #         "https://signin.autodesk.com"
+  #         "https://accounts.autodesk.com"
+  #         "https://access.autodesk.com"
+  #         "https://www.autodesk.com"
+  #       ];
+  #     }
+  #   ];
+  # };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "gtk";
-  };
+  # Fusion 360: xdg-desktop-portal lets the Steam Runtime open URLs in the host browser
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  #   config.common.default = "gtk";
+  # };
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;

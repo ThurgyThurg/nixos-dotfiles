@@ -1,6 +1,44 @@
-# fusion360.nix
+# fusion360.nix — DISABLED
 #
-# Declarative replacement for Kotya31415/Fusion180 on NixOS.
+# This module works but has UI issues on the 45" ultrawide (5120x1440):
+# dialog boxes bounce and can't be closed. Disabled until upstream Wine/Proton
+# fixes the dialog-positioning bug on non-standard window managers.
+#
+# ---------------------------------------------------------------------------
+# HOW TO RE-ENABLE
+# ---------------------------------------------------------------------------
+#
+# 1. home-itx.nix — uncomment the import:
+#      ./modules/fusion360.nix
+#
+# 2. hosts/itx/default.nix — uncomment these three blocks:
+#      programs.nix-ld.enable = true;
+#      programs.firefox.policies { AutoLaunchProtocolsFromOrigins ... }
+#      xdg.portal { ... }
+#
+# 3. Run: nrs
+#
+# 4. If first install: run `fusion360-install` (picks up the .exe from ~/Downloads).
+#    If prefix already exists (~/.fusion180): just run `fusion360`.
+#
+# 5. Auth flow: Fusion opens Chromium → log in → adskidmgr:// redirect is caught
+#    by adskidmgr-handler which injects AdskIdentityManager into the running
+#    Proton container via steam-runtime-launch-client.
+#
+# ---------------------------------------------------------------------------
+# KNOWN ISSUES (as of 2026-08-22)
+# ---------------------------------------------------------------------------
+#
+# - Dialog boxes bounce on ultrawide (5120x1440) with oxwm. Wine's dialog
+#   centering conflicts with the WM. Setting Managed=N in user.reg helps but
+#   removes WM decoration from all Wine windows. Investigate gamescope as a
+#   contained XWayland compositor to work around this.
+#
+# - The Wine prefix has Managed=N set in ~/.fusion180/pfx/user.reg. Revert
+#   by removing that line if needed.
+#
+# ---------------------------------------------------------------------------
+# DECLARATIVE REPLACEMENT for Kotya31415/Fusion180 on NixOS.
 #
 # The upstream project is two bash scripts. Everything they do EXCEPT running
 # Autodesk's installer .exe is config, so it belongs in your Nix files. The

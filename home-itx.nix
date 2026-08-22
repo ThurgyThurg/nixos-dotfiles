@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./modules/common-home.nix
-    ./modules/fusion360.nix
+    # ./modules/fusion360.nix  # disabled — see module for re-enable instructions
   ];
 
   home.packages = with pkgs; [
@@ -13,14 +13,15 @@
     discord
     pamixer
     mcp-nixos
-    chromium
+    #chromium
   ];
 
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = "chromium-browser.desktop";
-    "x-scheme-handler/http" = "chromium-browser.desktop";
-    "x-scheme-handler/https" = "chromium-browser.desktop";
-  };
+ # needed for fusion
+ # xdg.mimeApps.defaultApplications = {
+ #   "text/html" = "chromium-browser.desktop";
+ #   "x-scheme-handler/http" = "chromium-browser.desktop";
+ #   "x-scheme-handler/https" = "chromium-browser.desktop";
+ # };
 
 
 
