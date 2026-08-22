@@ -94,11 +94,17 @@ let
       BUSNAME_FILE="$STEAM_COMPAT_DATA_PATH/container-bus-name"
       rm -f "$BUSNAME_FILE"
 
-      # Pipe output so adskidmgr-handler can inject into this container
-      # rather than spawning a second one (which breaks Wine IPC).
+      # while-read loop runs in a subshell but writes to the filesystem,
+      # so BUSNAME_FILE is visible to adskidmgr-handler when it runs later.
       GAMEID=0 PROTONPATH="$(dirname "$PROTON")" umu-run "$FUSION" "''${1:-}" 2>&1 | \
-        tee >(grep -o 'bus-name=[^ ]*' | head -n1 | cut -d= -f2 | tr -d '\n' \
-          > "$BUSNAME_FILE") >&2 || true
+        while IFS= read -r _line; do
+          printf '%s\n' "$_line" >&2 || true
+          if [ ! -f "$BUSNAME_FILE" ] && \
+             printf '%s\n' "$_line" | grep -q 'bus-name='; then
+            printf '%s\n' "$_line" | grep -o 'bus-name=[^ ]*' | \
+              cut -d= -f2 | tr -d '\n' > "$BUSNAME_FILE" || true
+          fi
+        done || true
 
       rm -f "$BUSNAME_FILE"
     '';
@@ -135,7 +141,9 @@ let
       fi
 
       LAUNCH_CLIENT=$(find "$HOME/.local/share/umu" \
-        -name steam-runtime-launch-client -type f 2>/dev/null | sort | tail -n1)
+        -path "*/pressure-vessel/bin/steam-runtime-launch-client" \
+        -not -path "*/var/tmp*" \
+        -type f 2>/dev/null | head -n1)
       WINE64="$(dirname "$PROTON")/files/bin/wine64"
 
       if [ -n "$BUSNAME" ] && [ -n "$LAUNCH_CLIENT" ] && [ -x "$LAUNCH_CLIENT" ]; then
