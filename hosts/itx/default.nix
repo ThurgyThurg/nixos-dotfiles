@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     steam-run
     cifs-utils
+    protonup-qt
   ];
 
   programs.steam = {

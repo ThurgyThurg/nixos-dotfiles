@@ -43,6 +43,7 @@ in {
     redshift
     pavucontrol
     buzz
+    rustdesk-flutter
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
@@ -87,7 +88,7 @@ in {
       if [ -r /run/agenix/donetick-token ]; then
         export DONETICK_TOKEN="$(cat /run/agenix/donetick-token)"
       fi
-      export DONETICK_URL="https://tasks.graham29.com"
+      export DONETICK_URL="C"
       if [ -r /run/agenix/cf-access-client-secret ]; then
         export CF_ACCESS_CLIENT_SECRET="$(cat /run/agenix/cf-access-client-secret)"
       fi
