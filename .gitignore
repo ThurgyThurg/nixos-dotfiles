@@ -18,3 +18,6 @@ __pycache__/
 smb-secrets
 config/pomoctl/__pycache__/
 config/pomoctl/__pycache__/bus.cpython-313.pyc
+config/openlogi/agent.lock
+config/openlogi/overlay.claim
+config/openlogi/overlay.lock
