@@ -72,6 +72,7 @@
     nano
     impala
     nfs-utils
+    cifs-utils
     rofi
     sbctl
     alacritty
@@ -95,6 +96,14 @@
   fonts.packages = with pkgs; [nerd-fonts.jetbrains-mono];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  fileSystems."/mnt/NAS" = {
+    device = "//192.168.0.70/tim";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/home/tim/nixos-dotfiles/secrets/smb-secrets"];
+  };
 
   system.stateVersion = "25.11";
 }
