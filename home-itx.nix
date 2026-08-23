@@ -12,7 +12,6 @@
     orca-slicer
     discord
     pamixer
-    mcp-nixos
     #chromium
   ];
 

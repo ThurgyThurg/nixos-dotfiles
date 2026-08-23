@@ -35,6 +35,7 @@ in {
     cliamp
     bluetui
     claude-code
+    mcp-nixos
     tmux
     poppler-utils
     pandoc
