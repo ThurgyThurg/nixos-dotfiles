@@ -40,6 +40,13 @@
   networking.networkmanager.enable = true;
   services.tailscale.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    user = "tim";
+    dataDir = "/home/tim";
+    configDir = "/home/tim/.config/syncthing";
+  };
+
   services.xserver = {
     enable = true;
     windowManager.oxwm.enable = true;
