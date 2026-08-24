@@ -11,7 +11,10 @@
   networking.hostName = "nixos-itx";
 
   services.xserver.videoDriver = "nvidia";
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [cups-brother-hll3230cdw cups-filters];
+  };
 
   environment.systemPackages = with pkgs; [
     steam-run
