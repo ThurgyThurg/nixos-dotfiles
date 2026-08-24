@@ -46,7 +46,6 @@ in {
     buzz
     remmina
     freecad
-    bambu-studio
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
