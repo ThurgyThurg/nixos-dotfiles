@@ -50,6 +50,9 @@
   services.xserver = {
     enable = true;
     windowManager.oxwm.enable = true;
+    displayManager.sessionCommands = ''
+      xset s 5400 dpms 5400 5400 5400
+    '';
   };
 
   services.pipewire = {
