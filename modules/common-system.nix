@@ -102,7 +102,7 @@
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/home/tim/nixos-dotfiles/secrets/smb-secrets"];
+    in ["${automount_opts},credentials=/home/tim/nixos-dotfiles/secrets/smb-secrets,uid=1000,gid=1000,file_mode=0755,dir_mode=0755"];
   };
 
   system.stateVersion = "25.11";
