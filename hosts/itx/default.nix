@@ -11,6 +11,7 @@
   networking.hostName = "nixos-itx";
 
   services.xserver.videoDriver = "nvidia";
+  services.xserver.dpi = 96;
   services.printing = {
     enable = true;
     drivers = with pkgs; [cups-brother-hll3230cdw cups-filters];
@@ -27,6 +28,8 @@
     enable = true;
     extraCompatPackages = with pkgs; [proton-ge-bin];
   };
+
+  hardware.steam-hardware.enable = true;
 
   # Fusion 360: allow browser to hand off adskidmgr:// OAuth callbacks without a dialog
   # programs.firefox.policies = {
@@ -50,6 +53,8 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = "gtk";
   };
+
+
 
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;

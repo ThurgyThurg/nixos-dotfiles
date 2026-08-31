@@ -59,7 +59,7 @@
 
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "input"];
     packages = with pkgs; [tree];
   };
 

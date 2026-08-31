@@ -44,6 +44,17 @@
     };
   };
 
+  programs.firefox = {
+    enable = true;
+    configPath = ".mozilla/firefox";
+    profiles.default = {
+      settings = {
+        # 49" 5120x1440 is ~109 DPI — not HiDPI, so no UI scaling
+        "layout.css.devPixelsPerPx" = "1.0";
+      };
+    };
+  };
+
   programs.bash.shellAliases = {
     nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-itx";
   };
