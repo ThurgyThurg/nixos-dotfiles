@@ -35,6 +35,10 @@
     agenix-cli
   ];
 
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [proton-ge-bin];
+  };
   fonts.packages = with pkgs; [corefonts];
 
   hardware.nvidia = {
