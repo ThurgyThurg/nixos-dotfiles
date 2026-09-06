@@ -33,6 +33,8 @@
     simple-scan
     codex
     agenix-cli
+    bolt-launcher
+    runelite
   ];
 
   programs.steam = {
@@ -53,4 +55,12 @@
   };
 
   services.logind.settings.Login.HandleLidSwitch = "ignore";
+
+  services.flatpak.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config.common.default = "gtk";
+  };
 }
