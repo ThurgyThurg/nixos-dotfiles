@@ -26,7 +26,9 @@
     powerOnBoot = true;
   };
 
-  users.users.tim.extraGroups = ["scanner" "lp"];
+  users.users.tim.extraGroups = ["scanner" "lp" "plugdev"];
+
+  programs.pulseview.enable = true;
 
   environment.systemPackages = with pkgs; [
     tailscale
