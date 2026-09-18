@@ -37,7 +37,7 @@
     agenix-cli
     bolt-launcher
     runelite
-    signal-desktop
+    signal-cli
   ];
 
   programs.steam = {
