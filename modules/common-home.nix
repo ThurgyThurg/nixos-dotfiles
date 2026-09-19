@@ -43,9 +43,9 @@ in {
     flameshot
     redshift
     pavucontrol
-    buzz
     remmina
     freecad
+    davinci-resolve
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
