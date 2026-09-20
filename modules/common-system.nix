@@ -93,7 +93,13 @@
   programs.dconf.enable = true;
   programs.i3lock.enable = true;
 
-  fonts.packages = with pkgs; [nerd-fonts.jetbrains-mono];
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    (pkgs.runCommand "anton-font" {} ''
+      mkdir -p $out/share/fonts/truetype
+      cp ${../Anton-Regular.ttf} $out/share/fonts/truetype/Anton-Regular.ttf
+    '')
+  ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
