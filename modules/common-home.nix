@@ -20,6 +20,7 @@ in {
   home.homeDirectory = "/home/tim";
   home.stateVersion = "25.11";
   home.file.".xinitrc".source = create_symlink "${dotfiles}/xinitrc";
+  home.file.".local/share/fonts/Anton-Regular.ttf".source = ../Anton-Regular.ttf;
   home.file.".config/openlogi".source =
     config.lib.file.mkOutOfStoreSymlink
     "${config.home.homeDirectory}/nixos-dotfiles/config/openlogi";
