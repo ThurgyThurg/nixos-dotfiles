@@ -48,6 +48,7 @@ in {
     remmina
     freecad
     davinci-resolve
+    obs-studio
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
