@@ -49,7 +49,10 @@
 
   services.xserver = {
     enable = true;
-    windowManager.oxwm.enable = true;
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [ i3status ];
+    };
   };
 
   services.pipewire = {

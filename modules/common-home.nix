@@ -7,11 +7,13 @@
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   buzz = pkgs.callPackage ../packages/buzz_desktop/package.nix {};
   configs = {
-    oxwm = "oxwm";
+    i3 = "i3";
     alacritty = "alacritty";
     btop = "btop";
     obsidian = "obsidian";
     cliamp = "cliamp";
+    picom = "picom";
+    dunst = "dunst";
   };
 in {
   imports = [./theme.nix];

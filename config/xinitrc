@@ -9,5 +9,4 @@ fi
 
 xset s 5400 5400
 xset dpms 5400 5400 5400
-feh --bg-scale ~/.config/oxwm/wallpaper.png & picom  & redshift -l 40.500664664:-80.067833062 &
-exec oxwm
+exec i3

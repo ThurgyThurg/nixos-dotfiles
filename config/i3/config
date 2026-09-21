@@ -1,0 +1,132 @@
+# vi: set ft=i3config:
+
+set $mod Mod4
+set $terminal alacritty
+
+font pango:JetBrainsMono Nerd Font 10
+
+# Gaps
+gaps inner 5
+gaps outer 10
+
+# Borders
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+
+# Tokyo Night colors
+set $bg       #1a1b26
+set $fg       #a9b1d6
+set $cyan     #33ccff
+set $inactive #595959
+set $urgent   #f7768e
+
+# class                  border     bg    text  indicator  child_border
+client.focused           $cyan      $bg   $fg   $cyan      $cyan
+client.focused_inactive  $inactive  $bg   $fg   $inactive  $inactive
+client.unfocused         $inactive  $bg   $fg   $inactive  $inactive
+client.urgent            $urgent    $bg   $fg   $urgent    $urgent
+
+# Autostart
+exec --no-startup-id dunst
+exec --no-startup-id redshift -l 40.500664664:-80.067833062
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.png
+exec_always --no-startup-id picom
+
+# Terminal / launcher / screenshot
+bindsym $mod+Return exec $terminal
+bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+s exec --no-startup-id flameshot gui
+
+# Window management
+bindsym $mod+w kill
+bindsym $mod+f fullscreen toggle
+bindsym $mod+shift+space floating toggle
+bindsym $mod+shift+l exec --no-startup-id i3lock -i $HOME/.config/i3/wallpaper.png -e
+
+# Focus — arrow keys + vim j/k/h/l
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+# Move
+bindsym $mod+shift+j move down
+bindsym $mod+shift+k move up
+bindsym $mod+shift+Left move left
+bindsym $mod+shift+Right move right
+bindsym $mod+shift+Up move up
+bindsym $mod+shift+Down move down
+
+# Split direction
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# Layout cycle (matches oxwm Mod+N)
+bindsym $mod+n layout toggle tabbed splith splitv
+
+# Resize (matches oxwm Mod+minus/equal)
+bindsym $mod+minus resize shrink width 5 px or 5 ppt
+bindsym $mod+equal resize grow width 5 px or 5 ppt
+
+# Multi-monitor (matches oxwm Mod+comma/period)
+bindsym $mod+comma focus output left
+bindsym $mod+period focus output right
+bindsym $mod+shift+comma move workspace to output left
+bindsym $mod+shift+period move workspace to output right
+
+# Restart / reload
+bindsym $mod+shift+r restart
+bindsym $mod+shift+c reload
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+
+bindsym $mod+shift+1 move container to workspace number $ws1
+bindsym $mod+shift+2 move container to workspace number $ws2
+bindsym $mod+shift+3 move container to workspace number $ws3
+bindsym $mod+shift+4 move container to workspace number $ws4
+bindsym $mod+shift+5 move container to workspace number $ws5
+bindsym $mod+shift+6 move container to workspace number $ws6
+bindsym $mod+shift+7 move container to workspace number $ws7
+bindsym $mod+shift+8 move container to workspace number $ws8
+bindsym $mod+shift+9 move container to workspace number $ws9
+
+# Status bar
+bar {
+    status_command i3status --config $HOME/.config/i3/i3status.conf
+    position top
+    font pango:JetBrainsMono Nerd Font 10
+    colors {
+        background $bg
+        statusline $fg
+        separator  $inactive
+        #                     border    bg        text
+        focused_workspace     $cyan     $bg       $cyan
+        active_workspace      $inactive $bg       $fg
+        inactive_workspace    $bg       $bg       $fg
+        urgent_workspace      $urgent   $urgent   $bg
+    }
+}
