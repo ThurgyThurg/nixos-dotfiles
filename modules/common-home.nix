@@ -51,6 +51,7 @@ in {
     freecad
     davinci-resolve
     obs-studio
+    bluebubbles
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
