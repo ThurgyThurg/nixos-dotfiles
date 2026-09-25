@@ -48,7 +48,9 @@ in {
     redshift
     pavucontrol
     remmina
-    freecad
+    (freecad.customize {
+      pythons = [ (ps: with ps; [ pyjwt requests tzlocal ]) ];
+    })
     davinci-resolve
     obs-studio
     bluebubbles
