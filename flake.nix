@@ -29,6 +29,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -40,6 +44,7 @@
     donetick-tui,
     openlogi,
     rust-overlay,
+    nur,
     ...
   }: let
     openlogiModule = {pkgs, ...}: {
@@ -67,6 +72,7 @@
           [
             {
               nixpkgs.overlays = [
+                nur.overlays.default
                 (final: prev: {
                   donetick-tui = donetick-tui.packages.${prev.stdenv.hostPlatform.system}.default;
                 })

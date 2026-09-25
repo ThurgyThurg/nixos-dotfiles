@@ -48,9 +48,14 @@
     enable = true;
     configPath = ".mozilla/firefox";
     profiles.default = {
+      extensions.packages = [
+        pkgs.nur.repos.rycee.firefox-addons.onepassword-password-manager
+      ];
       settings = {
         # 49" 5120x1440 is ~109 DPI — not HiDPI, so no UI scaling
         "layout.css.devPixelsPerPx" = "1.0";
+        "browser.startup.homepage" = "https://start.graham29.com";
+        "browser.startup.page" = 1;
       };
     };
   };
