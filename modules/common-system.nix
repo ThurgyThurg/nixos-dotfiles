@@ -112,6 +112,7 @@
           obs-vaapi #optional AMD hardware acceleration
           obs-gstreamer
           obs-vkcapture
+          obs-composite-blur
         ];
       };
   fonts.packages = with pkgs; [
