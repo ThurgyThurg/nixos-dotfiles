@@ -52,7 +52,6 @@ in {
       pythons = [ (ps: with ps; [ pyjwt requests tzlocal ]) ];
     })
     davinci-resolve
-    obs-studio
     bluebubbles
     (pkgs.writeShellApplication {
       name = "ns";
