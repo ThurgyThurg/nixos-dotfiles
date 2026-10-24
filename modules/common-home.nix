@@ -41,6 +41,7 @@ in {
     bluetui
     claude-code
     mcp-nixos
+    git-lfs
     tmux
     poppler-utils
     pandoc
