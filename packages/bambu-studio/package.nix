@@ -9,6 +9,8 @@ appimageTools.wrapType2 {
     libsecret
     xdg-utils
     webkitgtk_4_1
+    glib-networking
+    openssl
   ];
 
   meta = {
