@@ -8,6 +8,7 @@ appimageTools.wrapType2 {
   extraPkgs = pkgs: with pkgs; [
     libsecret
     xdg-utils
+    webkitgtk_4_1
   ];
 
   meta = {
