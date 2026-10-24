@@ -6,6 +6,7 @@
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   buzz = pkgs.callPackage ../packages/buzz_desktop/package.nix {};
+  bambu-studio = pkgs.callPackage ../packages/bambu-studio/package.nix {};
   configs = {
     i3 = "i3";
     alacritty = "alacritty";
@@ -53,6 +54,7 @@ in {
     })
     davinci-resolve
     bluebubbles
+    bambu-studio
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
