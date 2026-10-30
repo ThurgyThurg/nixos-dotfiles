@@ -11,6 +11,16 @@
         "clientId": "http://localhost:12345",
         "callbackPort": 12345
       }
+    },
+    "solidcraft": {
+      "type": "stdio",
+      "command": "solidcraft-cli",
+      "args": ["mcp"]
+    },
+    "solidcraft-live": {
+      "type": "stdio",
+      "command": "solidcraft-cli",
+      "args": ["mcp", "--connect", "127.0.0.1:27878"]
     }
   }
 }
