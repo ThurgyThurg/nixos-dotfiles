@@ -41,7 +41,6 @@ in {
     bluetui
     claude-code
     mcp-nixos
-    git-lfs
     tmux
     poppler-utils
     pandoc
@@ -79,6 +78,7 @@ in {
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     settings = {
       user.name = "ThurgyThurg";
       user.email = "tim@graham29.com";

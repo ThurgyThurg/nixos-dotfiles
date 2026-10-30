@@ -267,7 +267,8 @@
         "nur": "nur",
         "openlogi": "openlogi",
         "oxwm": "oxwm",
-        "rust-overlay": "rust-overlay_2"
+        "rust-overlay": "rust-overlay_2",
+        "solidcraft": "solidcraft"
       }
     },
     "rust-overlay": {
@@ -308,6 +309,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "solidcraft": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793375305,
+        "narHash": "sha256-HAWS0z9jVzd2B8SgXX8+Wqr1pe0YP081gkLg9h0bTPI=",
+        "owner": "bherbruck",
+        "repo": "solidcraft",
+        "rev": "ad1652683b67ccea2a3664e473fabf0783a2efa9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bherbruck",
+        "repo": "solidcraft",
         "type": "github"
       }
     },
