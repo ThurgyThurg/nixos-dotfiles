@@ -46,6 +46,8 @@
   };
   fonts.packages = with pkgs; [corefonts];
 
+  hardware.graphics.enable = true;
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;

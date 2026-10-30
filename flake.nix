@@ -33,6 +33,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    solidcraft = {
+      url = "github:bherbruck/solidcraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -45,6 +49,7 @@
     openlogi,
     rust-overlay,
     nur,
+    solidcraft,
     ...
   }: let
     openlogiModule = {pkgs, ...}: {
@@ -75,6 +80,7 @@
                 nur.overlays.default
                 (final: prev: {
                   donetick-tui = donetick-tui.packages.${prev.stdenv.hostPlatform.system}.default;
+                  solidcraft = solidcraft.packages.${prev.stdenv.hostPlatform.system}.solidcraft;
                 })
               ];
             }

@@ -56,6 +56,7 @@ in {
     davinci-resolve
     bluebubbles
     bambu-studio
+    solidcraft
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
