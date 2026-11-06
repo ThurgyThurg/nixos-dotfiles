@@ -1,21 +1,34 @@
-{ appimageTools, fetchurl, lib }:
+{ appimageTools, fetchurl, lib, makeDesktopItem }:
 
 let
+  pname = "pdfcraft";
   version = "0.18.2";
   src = fetchurl {
     url = "https://github.com/storytold/pdfcraft/releases/download/v${version}/pdfcraft-${version}-linux-x86_64.AppImage";
     hash = "sha256-vtsfgXPn65+h1YALZbQe07Wletk+VmHGqSGipFAkIpE=";
   };
+  desktopItem = makeDesktopItem {
+    name = pname;
+    exec = pname;
+    icon = pname;
+    desktopName = "PdfCraft";
+    comment = "PDF crafting and processing tool";
+    categories = [ "Office" "Utility" ];
+  };
 in
 appimageTools.wrapType2 {
-  pname = "pdfcraft";
-  inherit version src;
+  inherit pname version src;
+
+  extraInstallCommands = ''
+    install -Dm444 ${desktopItem}/share/applications/${pname}.desktop \
+      $out/share/applications/${pname}.desktop
+  '';
 
   meta = {
     description = "PDF crafting and processing tool";
     homepage = "https://github.com/storytold/pdfcraft";
     license = lib.licenses.asl20;
     platforms = [ "x86_64-linux" ];
-    mainProgram = "pdfcraft";
+    mainProgram = pname;
   };
 }
