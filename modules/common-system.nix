@@ -90,6 +90,7 @@
     donetick-tui
     lyx
     texliveFull
+    pandoc
   ];
 
   nixpkgs.config.allowUnfree = true;
