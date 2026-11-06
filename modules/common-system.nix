@@ -89,7 +89,7 @@
     onlyoffice-desktopeditors
     donetick-tui
     lyx
-    texliveFullWithDocs
+    texliveFull
   ];
 
   nixpkgs.config.allowUnfree = true;
