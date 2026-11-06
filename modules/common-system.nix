@@ -88,6 +88,8 @@
     unzip
     onlyoffice-desktopeditors
     donetick-tui
+    lyx
+    texliveFull
   ];
 
   nixpkgs.config.allowUnfree = true;
