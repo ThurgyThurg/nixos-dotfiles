@@ -91,6 +91,10 @@
     lyx
     texliveFull
     pandoc
+    librsvg       # provides rsvg-convert
+    inkscape      # LyX's preferred SVG converter
+    imagemagick   # general image conversions
+    ghostscript   # EPS/PDF handling
   ];
 
   nixpkgs.config.allowUnfree = true;
