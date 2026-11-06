@@ -7,6 +7,8 @@
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   buzz = pkgs.callPackage ../packages/buzz_desktop/package.nix {};
   bambu-studio = pkgs.callPackage ../packages/bambu-studio/package.nix {};
+  pdfcraft = pkgs.callPackage ../packages/pdfcraft/package.nix {};
+  solidcraft = pkgs.callPackage ../packages/solidcraft/package.nix {};
   configs = {
     i3 = "i3";
     alacritty = "alacritty";
@@ -55,6 +57,7 @@ in {
     davinci-resolve
     bluebubbles
     bambu-studio
+    pdfcraft
     solidcraft
     (pkgs.writeShellApplication {
       name = "ns";
