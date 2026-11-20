@@ -8,7 +8,12 @@ in {
   imports = [./modules/common-home.nix];
 
   home.packages = [
-    pkgs.kicad
+    (pkgs.kicad.overrideAttrs (old: {
+      pythonPath = old.pythonPath ++ (with pkgs.python3Packages; [
+        scipy
+        shapely
+      ]);
+    }))
     stm32cubemx
     (import ./packages/work-tuimer.nix {inherit pkgs;})
   ];

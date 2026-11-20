@@ -19,6 +19,13 @@
   hardware.sane = {
     enable = true;
     extraBackends = [pkgs.sane-airscan];
+    brscan4 = {
+      enable = true;
+      netDevices.brother = {
+        model = "HL-L3290CDW";
+        ip = "192.168.0.190";
+      };
+    };
   };
 
   hardware.bluetooth = {

@@ -2,10 +2,10 @@
 
 let
   pname = "pdfcraft";
-  version = "0.19.0";
+  version = "0.21.1";
   src = fetchurl {
     url = "https://github.com/storytold/pdfcraft/releases/download/v${version}/pdfcraft-${version}-linux-x86_64.AppImage";
-    hash = "sha256-fW9YdaTWjPH9K+jbnzBTFCwlBzUMF/GEEjDvJsIsCzY=";
+    hash = "sha256-cwJ2zamt2z1I8mxgJobRj8W8Dr42CmCi9SLXDP1CjSE=";
   };
   desktopItem = makeDesktopItem {
     name = pname;

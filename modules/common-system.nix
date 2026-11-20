@@ -94,7 +94,8 @@
     librsvg       # provides rsvg-convert
     inkscape      # LyX's preferred SVG converter
     imagemagick   # general image conversions
-    ghostscript   # EPS/PDF handling
+    ghostscript
+ ledger-live-desktop   # EPS/PDF handling
   ];
 
   nixpkgs.config.allowUnfree = true;
