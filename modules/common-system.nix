@@ -95,7 +95,8 @@
     inkscape      # LyX's preferred SVG converter
     imagemagick   # general image conversions
     ghostscript
- ledger-live-desktop   # EPS/PDF handling
+    ledger-live-desktop   # EPS/PDF handling
+    ledger-udev-rules
   ];
 
   nixpkgs.config.allowUnfree = true;
